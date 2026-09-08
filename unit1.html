@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>귀화시험 준비 퀴즈 (쉬운 버전) / Đề luyện thi nhập tịch (Dễ)</title>
+<style>
+  :root {
+    --bg: #fbf8f2;
+    --card: #ffffff;
+    --accent: #2f7d4f;
+    --accent-light: #e6f5ec;
+    --correct: #2e7d32;
+    --wrong: #c62828;
+    --text: #222;
+    --muted: #666;
+    --border: #e5e0d5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px 16px;
+    display: flex;
+    justify-content: center;
+  }
+  .wrap { width: 100%; max-width: 640px; }
+  h1 { font-size: 20px; margin: 0 0 4px; color: var(--accent); }
+  .sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .toolbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 16px; gap: 8px; flex-wrap: wrap;
+  }
+  .toggle-btn {
+    background: var(--card); border: 1px solid var(--accent); color: var(--accent);
+    padding: 8px 14px; border-radius: 20px; font-size: 13px; cursor: pointer; font-weight: 600;
+  }
+  .toggle-btn.active { background: var(--accent); color: #fff; }
+  .progress { font-size: 13px; color: var(--muted); }
+  .card {
+    background: var(--card); border-radius: 14px; padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06); margin-bottom: 16px; border: 1px solid var(--border);
+  }
+  .qnum { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .qtext-ko { font-size: 17px; font-weight: 700; margin-bottom: 4px; line-height: 1.6; }
+  .qtext-vi { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 14px; line-height: 1.4; }
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .option {
+    text-align: left; padding: 12px; border-radius: 10px; border: 1px solid var(--border);
+    background: #fafafa; cursor: pointer; font-size: 15px; line-height: 1.4;
+  }
+  .option:hover { background: var(--accent-light); }
+  .option.selected { border-color: var(--accent); background: var(--accent-light); }
+  .option.correct { border-color: var(--correct); background: #e8f5e9; color: var(--correct); font-weight: 700; }
+  .option.wrong { border-color: var(--wrong); background: #fdecea; color: var(--wrong); font-weight: 700; }
+  .opt-vi { display: block; font-size: 12px; color: var(--muted); font-style: italic; margin-top: 2px; }
+  .explain {
+    margin-top: 12px; font-size: 13px; background: var(--accent-light);
+    padding: 10px 12px; border-radius: 10px; color: #245c39; display: none;
+  }
+  .explain.show { display: block; }
+  .nav-btns { display: flex; justify-content: space-between; margin-top: 20px; }
+  button.nav {
+    background: var(--accent); color: #fff; border: none; padding: 10px 18px;
+    border-radius: 20px; font-size: 14px; cursor: pointer; font-weight: 600;
+  }
+  button.nav:disabled { background: #ccc; cursor: not-allowed; }
+  .result { text-align: center; padding: 30px 20px; }
+  .result h2 { color: var(--accent); font-size: 22px; }
+  .score { font-size: 40px; font-weight: 800; color: var(--accent); margin: 10px 0; }
+  .restart {
+    margin-top: 16px; background: var(--accent); color: #fff; border: none;
+    padding: 10px 22px; border-radius: 20px; font-size: 14px; cursor: pointer;
+  }
+  .hidden { display: none; }
+  .star { font-size: 20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>⭐ 귀화시험 준비 퀴즈 (쉬운 버전)</h1>
+  <div class="sub">Đề luyện thi nhập tịch Hàn Quốc (Phiên bản dễ)</div>
+
+  <div class="toolbar">
+    <button class="toggle-btn active" id="viToggle">🇻🇳 베트남어 번역 켜짐</button>
+    <div class="progress" id="progress">1 / 10</div>
+  </div>
+
+  <div id="quizArea"></div>
+  <div id="resultArea" class="hidden result">
+    <h2>결과 / Kết quả</h2>
+    <div class="score" id="scoreText">0 / 10</div>
+    <div id="scoreMsg"></div>
+    <button class="restart" id="restartBtn">다시 풀기 / Làm lại</button>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    ko: "한국의 수도는 어디예요?",
+    vi: "Thủ đô của Hàn Quốc là gì?",
+    options: [
+      { ko: "부산", vi: "Busan" },
+      { ko: "서울", vi: "Seoul" },
+      { ko: "제주도", vi: "Đảo Jeju" },
+      { ko: "대구", vi: "Daegu" }
+    ],
+    answer: 1,
+    explain: "한국의 수도는 서울이에요."
+  },
+  {
+    ko: "한국의 국기 이름은 무엇이에요?",
+    vi: "Tên lá cờ Hàn Quốc là gì?",
+    options: [
+      { ko: "태극기", vi: "Taegukgi" },
+      { ko: "무궁화", vi: "Hoa mugunghwa" },
+      { ko: "애국가", vi: "Quốc ca" },
+      { ko: "한복", vi: "Hanbok" }
+    ],
+    answer: 0,
+    explain: "한국 국기의 이름은 '태극기'예요."
+  },
+  {
+    ko: "위급한 상황일 때, 경찰에 신고하는 전화번호는 몇 번이에요?",
+    vi: "Khi có việc khẩn cấp, số điện thoại báo cảnh sát là số nào?",
+    options: [
+      { ko: "119", vi: "119" },
+      { ko: "112", vi: "112" },
+      { ko: "114", vi: "114" },
+      { ko: "120", vi: "120" }
+    ],
+    answer: 1,
+    explain: "경찰 신고 번호는 112예요. 불이 나거나 아플 때는 119예요."
+  },
+  {
+    ko: "한국에서 대통령을 뽑는 선거는 몇 년마다 해요?",
+    vi: "Ở Hàn Quốc, bao nhiêu năm bầu cử Tổng thống một lần?",
+    options: [
+      { ko: "2년", vi: "2 năm" },
+      { ko: "4년", vi: "4 năm" },
+      { ko: "5년", vi: "5 năm" },
+      { ko: "10년", vi: "10 năm" }
+    ],
+    answer: 2,
+    explain: "한국 대통령의 임기는 5년이에요."
+  },
+  {
+    ko: "한글을 만든 사람은 누구예요?",
+    vi: "Ai là người đã tạo ra chữ Hangeul?",
+    options: [
+      { ko: "이순신 장군", vi: "Tướng quân Yi Sun-sin" },
+      { ko: "세종대왕", vi: "Vua Sejong Đại vương" },
+      { ko: "김구 선생님", vi: "Thầy Kim Gu" },
+      { ko: "유관순 열사", vi: "Liệt sĩ Yu Gwan-sun" }
+    ],
+    answer: 1,
+    explain: "세종대왕이 한글을 만들었어요."
+  },
+  {
+    ko: "한국의 명절이 아닌 것은 무엇이에요?",
+    vi: "Ngày nào KHÔNG phải là ngày lễ truyền thống của Hàn Quốc?",
+    options: [
+      { ko: "설날", vi: "Tết Nguyên đán" },
+      { ko: "추석", vi: "Tết Trung thu (Chuseok)" },
+      { ko: "크리스마스", vi: "Giáng sinh" },
+      { ko: "할로윈", vi: "Halloween" }
+    ],
+    answer: 3,
+    explain: "할로윈은 서양 기념일이고, 한국 전통 명절이 아니에요."
+  },
+  {
+    ko: "외국인이 한국에 90일보다 더 오래 살고 싶으면 무엇을 만들어야 해요?",
+    vi: "Nếu người nước ngoài muốn sống ở Hàn Quốc hơn 90 ngày, phải làm gì?",
+    options: [
+      { ko: "외국인등록증을 만들어요", vi: "Làm thẻ đăng ký người nước ngoài" },
+      { ko: "운전면허를 만들어요", vi: "Làm bằng lái xe" },
+      { ko: "여권을 새로 만들어요", vi: "Làm hộ chiếu mới" },
+      { ko: "은행 카드를 만들어요", vi: "Làm thẻ ngân hàng" }
+    ],
+    answer: 0,
+    explain: "90일보다 오래 살면 외국인등록증을 만들어야 해요."
+  },
+  {
+    ko: "한국의 화폐(돈) 단위는 무엇이에요?",
+    vi: "Đơn vị tiền tệ của Hàn Quốc là gì?",
+    options: [
+      { ko: "원", vi: "Won" },
+      { ko: "엔", vi: "Yên" },
+      { ko: "위안", vi: "Nhân dân tệ" },
+      { ko: "동", vi: "Đồng" }
+    ],
+    answer: 0,
+    explain: "한국 돈의 단위는 '원'이에요."
+  },
+  {
+    ko: "학교에 다니지 않는 어린이를 위해 나라가 지켜주는 것은 무엇이에요?",
+    vi: "Điều gì mà nhà nước bảo vệ cho trẻ em chưa đi học?",
+    options: [
+      { ko: "교육받을 권리", vi: "Quyền được giáo dục" },
+      { ko: "운전할 권리", vi: "Quyền lái xe" },
+      { ko: "투표할 권리", vi: "Quyền bầu cử" },
+      { ko: "여행할 권리", vi: "Quyền đi du lịch" }
+    ],
+    answer: 0,
+    explain: "모든 어린이는 교육받을 권리가 있어요."
+  },
+  {
+    ko: "한국에서 8월 15일은 무슨 날이에요?",
+    vi: "Ngày 15 tháng 8 ở Hàn Quốc là ngày gì?",
+    options: [
+      { ko: "광복절 (독립을 기념하는 날)", vi: "Ngày Giải phóng" },
+      { ko: "어린이날", vi: "Ngày Thiếu nhi" },
+      { ko: "설날", vi: "Tết Nguyên đán" },
+      { ko: "한글날", vi: "Ngày Hangeul" }
+    ],
+    answer: 0,
+    explain: "8월 15일은 광복절이에요. 일본으로부터 독립한 날을 기념해요."
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = new Array(questions.length).fill(false);
+let showVi = true;
+
+const quizArea = document.getElementById('quizArea');
+const resultArea = document.getElementById('resultArea');
+const progress = document.getElementById('progress');
+const viToggle = document.getElementById('viToggle');
+
+viToggle.addEventListener('click', () => {
+  showVi = !showVi;
+  viToggle.textContent = showVi ? "🇻🇳 베트남어 번역 켜짐" : "🇻🇳 베트남어 번역 꺼짐";
+  viToggle.classList.toggle('active', showVi);
+  render();
+});
+
+document.getElementById('restartBtn').addEventListener('click', () => {
+  current = 0;
+  score = 0;
+  answered = new Array(questions.length).fill(false);
+  resultArea.classList.add('hidden');
+  quizArea.classList.remove('hidden');
+  render();
+});
+
+function render() {
+  const q = questions[current];
+  progress.textContent = `${current + 1} / ${questions.length}`;
+
+  let html = `<div class="card">
+    <div class="qnum">문제 ${current + 1}</div>
+    <div class="qtext-ko">${q.ko}</div>`;
+  if (showVi) html += `<div class="qtext-vi">${q.vi}</div>`;
+  html += `<div class="options">`;
+
+  q.options.forEach((opt, i) => {
+    let cls = "option";
+    if (answered[current] !== false) {
+      if (i === q.answer) cls += " correct";
+      else if (i === answered[current].picked) cls += " wrong";
+    }
+    html += `<div class="${cls}" data-index="${i}">
+      <span>${opt.ko}</span>
+      ${showVi ? `<span class="opt-vi">${opt.vi}</span>` : ''}
+    </div>`;
+  });
+
+  html += `</div>`;
+  if (answered[current] !== false) {
+    html += `<div class="explain show">💡 ${q.explain}</div>`;
+  }
+  html += `</div>
+  <div class="nav-btns">
+    <button class="nav" id="prevBtn" ${current === 0 ? 'disabled' : ''}>이전 / Trước</button>
+    <button class="nav" id="nextBtn">${current === questions.length - 1 ? '결과보기 / Xem kết quả' : '다음 / Tiếp'}</button>
+  </div>`;
+
+  quizArea.innerHTML = html;
+
+  if (answered[current] === false) {
+    document.getElementById('nextBtn').disabled = true;
+    document.getElementById('nextBtn').style.opacity = 0.5;
+  }
+
+  quizArea.querySelectorAll('.option').forEach(el => {
+    el.addEventListener('click', () => {
+      if (answered[current] !== false) return;
+      const picked = parseInt(el.getAttribute('data-index'));
+      const correct = picked === q.answer;
+      answered[current] = { picked, correct };
+      if (correct) score++;
+      render();
+    });
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    if (current > 0) { current--; render(); }
+  });
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    if (answered[current] === false) return;
+    if (current < questions.length - 1) {
+      current++;
+      render();
+    } else {
+      showResult();
+    }
+  });
+}
+
+function showResult() {
+  quizArea.classList.add('hidden');
+  resultArea.classList.remove('hidden');
+  document.getElementById('scoreText').textContent = `${score} / ${questions.length}`;
+  const pct = Math.round((score / questions.length) * 100);
+  let msg = "";
+  if (pct >= 80) msg = "정말 잘했어요! 시험 준비가 잘 되고 있어요. 👍 / Rất giỏi! Bạn đang chuẩn bị rất tốt.";
+  else if (pct >= 50) msg = "잘하고 있어요! 조금만 더 연습해요. 💪 / Khá tốt! Hãy luyện tập thêm một chút.";
+  else msg = "괜찮아요, 다시 한번 풀어봐요! 🙂 / Không sao, hãy thử làm lại nhé!";
+  document.getElementById('scoreMsg').textContent = msg;
+}
+
+render();
+</script>
+</body>
+</html>
