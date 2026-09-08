@@ -3,307 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>귀화시험 연습 (쉬운 버전, 10회)</title>
+<title>귀화시험 종합 연습 (원본 확인, 26회)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --main:#2f7d4f;
-  --main-dark:#1e5c38;
-  --bg:#fbf8f2;
-  --card-bg:#ffffff;
-  --border:#e5e0d5;
-  --ink:#222;
-  --correct:#2e7d32;
-  --correct-bg:#e8f5e9;
-  --correct-border:#a5d6a7;
-  --wrong:#c62828;
-  --wrong-bg:#fdecea;
-  --wrong-border:#ef9a9a;
-  --muted:#777;
+  --main:#2f6fa8;--main-dark:#1f4d78;--bg:#f6f8fb;--card-bg:#ffffff;--border:#e0e6ee;--ink:#222;
+  --correct:#2e7d32;--correct-bg:#e8f5e9;--correct-border:#a5d6a7;
+  --wrong:#c62828;--wrong-bg:#fdecea;--wrong-border:#ef9a9a;--muted:#777;
 }
 *{box-sizing:border-box;}
-body{
-  margin:0;
-  background:var(--bg);
-  font-family:'Gothic A1',sans-serif;
-  color:var(--ink);
-  padding-bottom:40px;
-}
-.header{
-  background:linear-gradient(135deg,var(--main-dark),var(--main));
-  color:#fff;
-  padding:16px 0 12px;
-  border-radius:0 0 22px 22px;
-  text-align:center;
-}
-.header h1{
-  font-size:16px;
-  margin:0 18px 4px;
-  font-weight:800;
-}
-.header .sub{
-  font-size:12px;
-  margin:0 18px 12px;
-  opacity:.9;
-}
-.round-tabs{
-  display:flex;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-  gap:6px;
-  padding:0 12px;
-}
+body{margin:0;background:var(--bg);font-family:'Gothic A1',sans-serif;color:var(--ink);padding-bottom:40px;}
+.header{background:linear-gradient(135deg,var(--main-dark),var(--main));color:#fff;padding:16px 0 12px;border-radius:0 0 22px 22px;text-align:center;}
+.header h1{font-size:15px;margin:0 18px 4px;font-weight:800;}
+.header .sub{font-size:11.5px;margin:0 18px 12px;opacity:.9;}
+.round-tabs{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:6px;padding:0 12px;}
 .round-tabs::-webkit-scrollbar{display:none;}
-.round-tab{
-  flex:0 0 auto;
-  min-height:38px;
-  display:flex;
-  align-items:center;
-  padding:8px 14px;
-  background:rgba(255,255,255,.16);
-  color:#fff;
-  border:1px solid rgba(255,255,255,.35);
-  border-radius:999px;
-  font-size:13.5px;
-  font-weight:700;
-  cursor:pointer;
-  white-space:nowrap;
-}
-.round-tab.active{
-  background:#fff;
-  color:var(--main-dark);
-  border-color:#fff;
-}
-.vi-toggle-wrap{
-  padding:12px 18px 0;
-  display:flex;
-  justify-content:flex-end;
-}
-.vi-toggle{
-  background:var(--card-bg);
-  border:1px solid var(--main);
-  color:var(--main);
-  padding:6px 12px;
-  border-radius:16px;
-  font-size:12.5px;
-  font-weight:700;
-  cursor:pointer;
-}
-.vi-toggle.active{
-  background:var(--main);
-  color:#fff;
-}
-.progress-wrap{
-  padding:10px 18px 0;
-}
-.progress-bar-bg{
-  background:var(--border);
-  height:8px;
-  border-radius:999px;
-  overflow:hidden;
-}
-.progress-bar-fill{
-  background:var(--main);
-  height:100%;
-  border-radius:999px;
-  transition:width .3s;
-}
-.progress-label{
-  text-align:right;
-  font-size:12px;
-  color:var(--muted);
-  font-weight:700;
-  margin-top:4px;
-}
-.stage{
-  padding:16px 18px 30px;
-}
-.card{
-  background:var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:18px 16px;
-  margin-bottom:16px;
-}
-.q-number{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:26px;height:26px;
-  background:var(--main);
-  color:#fff;
-  border-radius:50%;
-  font-size:13px;
-  font-weight:800;
-  margin-right:8px;
-}
-.q-text{
-  font-size:16.5px;
-  font-weight:700;
-  line-height:1.6;
-  margin:10px 0 4px;
-}
-.q-vi{
-  font-size:12.5px;
-  font-weight:400;
-  color:var(--muted);
-  font-style:italic;
-  line-height:1.5;
-  margin-bottom:16px;
-}
-.options{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.option{
-  min-height:46px;
-  display:flex;
-  flex-direction:column;
-  padding:12px 14px;
-  background:#fafafa;
-  border:1.5px solid var(--border);
-  border-radius:12px;
-  font-size:15px;
-  font-weight:600;
-  cursor:pointer;
-  transition:.15s;
-}
-.opt-vi{
-  display:block;
-  font-size:11.5px;
-  font-weight:400;
-  color:var(--muted);
-  font-style:italic;
-  margin-top:2px;
-}
+.round-tab{flex:0 0 auto;min-height:34px;display:flex;align-items:center;padding:6px 11px;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.round-tab.active{background:#fff;color:var(--main-dark);border-color:#fff;}
+.vi-toggle-wrap{padding:12px 18px 0;display:flex;justify-content:flex-end;}
+.vi-toggle{background:var(--card-bg);border:1px solid var(--main);color:var(--main);padding:6px 12px;border-radius:16px;font-size:12.5px;font-weight:700;cursor:pointer;}
+.vi-toggle.active{background:var(--main);color:#fff;}
+.progress-wrap{padding:10px 18px 0;}
+.progress-bar-bg{background:var(--border);height:8px;border-radius:999px;overflow:hidden;}
+.progress-bar-fill{background:var(--main);height:100%;border-radius:999px;transition:width .3s;}
+.progress-label{text-align:right;font-size:12px;color:var(--muted);font-weight:700;margin-top:4px;}
+.stage{padding:16px 18px 30px;}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:18px 16px;margin-bottom:16px;}
+.q-number{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--main);color:#fff;border-radius:50%;font-size:13px;font-weight:800;margin-right:8px;}
+.q-text{font-size:16.5px;font-weight:700;line-height:1.6;margin:10px 0 4px;}
+.q-vi{font-size:12.5px;font-weight:400;color:var(--muted);font-style:italic;line-height:1.5;margin-bottom:16px;}
+.options{display:flex;flex-direction:column;gap:10px;}
+.option{min-height:46px;display:flex;flex-direction:column;padding:12px 14px;background:#fafafa;border:1.5px solid var(--border);border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:.15s;}
+.opt-vi{display:block;font-size:11.5px;font-weight:400;color:var(--muted);font-style:italic;margin-top:2px;}
 .option .icon{margin-right:6px;font-weight:800;}
 .option:active{transform:scale(0.99);}
-.option.correct{
-  background:var(--correct-bg);
-  border-color:var(--correct-border);
-  color:var(--correct);
-}
-.option.wrong{
-  background:var(--wrong-bg);
-  border-color:var(--wrong-border);
-  color:var(--wrong);
-}
-.option.disabled-look{
-  opacity:.55;
-}
-.explanation{
-  margin-top:14px;
-  padding:12px 14px;
-  background:var(--bg);
-  border-radius:12px;
-  font-size:13.5px;
-  line-height:1.6;
-  display:none;
-}
+.option.correct{background:var(--correct-bg);border-color:var(--correct-border);color:var(--correct);}
+.option.wrong{background:var(--wrong-bg);border-color:var(--wrong-border);color:var(--wrong);}
+.option.disabled-look{opacity:.55;}
+.explanation{margin-top:14px;padding:12px 14px;background:var(--bg);border-radius:12px;font-size:13.5px;line-height:1.6;display:none;}
 .explanation.show{display:block;}
-.explanation .label{
-  font-weight:800;
-  color:var(--main-dark);
-  margin-bottom:4px;
-  display:block;
-}
-.exp-vi{
-  display:block;
-  margin-top:6px;
-  font-size:12.5px;
-  color:var(--muted);
-  font-style:italic;
-  font-weight:400;
-}
-.info-card{
-  background:#fff;
-  border:1.5px dashed var(--border);
-  border-radius:16px;
-  padding:18px 16px;
-  margin-bottom:16px;
-  text-align:center;
-}
-.info-card .tag{
-  display:inline-block;
-  background:var(--main);
-  color:#fff;
-  font-size:11px;
-  font-weight:700;
-  padding:4px 10px;
-  border-radius:999px;
-  margin-bottom:10px;
-}
-.info-card p{
-  font-size:16px;
-  font-weight:700;
-  margin:8px 0 2px;
-  line-height:1.5;
-}
-.info-card .info-vi{
-  font-size:12.5px;
-  color:var(--muted);
-  font-style:italic;
-  margin-bottom:10px;
-}
-.info-card .sub{
-  font-size:12.5px;
-  color:var(--muted);
-  line-height:1.5;
-}
-.next-btn{
-  width:100%;
-  padding:13px;
-  border:none;
-  border-radius:14px;
-  background:var(--main);
-  color:#fff;
-  font-size:15px;
-  font-weight:800;
-  cursor:pointer;
-}
-.next-btn:disabled{
-  background:#ccc;
-  cursor:not-allowed;
-}
-.result-card{
-  background:var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:30px 20px;
-  text-align:center;
-}
-.result-score{
-  font-size:38px;
-  font-weight:800;
-  color:var(--main);
-  margin:10px 0;
-}
-.result-msg{
-  font-size:14px;
-  color:var(--muted);
-  margin-bottom:16px;
-  line-height:1.5;
-}
-.retry-btn{
-  padding:11px 22px;
-  border:none;
-  border-radius:16px;
-  background:var(--main);
-  color:#fff;
-  font-size:14px;
-  font-weight:800;
-  cursor:pointer;
-}
+.explanation .label{font-weight:800;color:var(--main-dark);margin-bottom:4px;display:block;}
+.exp-vi{display:block;margin-top:6px;font-size:12.5px;color:var(--muted);font-style:italic;font-weight:400;}
+.info-card{background:#fff;border:1.5px dashed var(--border);border-radius:16px;padding:18px 16px;margin-bottom:16px;text-align:center;}
+.info-card .tag{display:inline-block;background:var(--main);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;margin-bottom:10px;}
+.info-card p{font-size:16px;font-weight:700;margin:8px 0 2px;line-height:1.5;}
+.info-card .info-vi{font-size:12.5px;color:var(--muted);font-style:italic;margin-bottom:10px;}
+.info-card .sub{font-size:12.5px;color:var(--muted);line-height:1.5;}
+.next-btn{width:100%;padding:13px;border:none;border-radius:14px;background:var(--main);color:#fff;font-size:15px;font-weight:800;cursor:pointer;}
+.next-btn:disabled{background:#ccc;cursor:not-allowed;}
+.result-card{background:var(--card-bg);border:1px solid var(--border);border-radius:18px;padding:30px 20px;text-align:center;}
+.result-score{font-size:38px;font-weight:800;color:var(--main);margin:10px 0;}
+.result-msg{font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
+.retry-btn{padding:11px 22px;border:none;border-radius:16px;background:var(--main);color:#fff;font-size:14px;font-weight:800;cursor:pointer;}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>⭐ 귀화시험 연습 (쉬운 버전)</h1>
-  <div class="sub">Luyện thi nhập tịch - Phiên bản dễ (10 회)</div>
+  <h1>⭐ 귀화시험 종합 연습 (26회)</h1>
+  <div class="sub">Luyện thi nhập tịch - Dựa trên tài liệu gốc 143 câu</div>
   <div class="round-tabs" id="roundTabs"></div>
 </div>
 
@@ -322,253 +81,434 @@ body{
 let showVi = true;
 
 const rounds = [
-{
-  title: "1회 · 우리나라 상징",
-  items: [
-    {type:"mc", q:"한국의 국기 이름은 무엇입니까?", qVi:"Tên lá cờ Hàn Quốc là gì?",
-     options:["태극기","무궁화","애국가","한복"], optionsVi:["Taegukgi","Hoa mugunghwa","Quốc ca","Hanbok"], answer:0,
-     exp:"한국의 국기 이름은 태극기입니다.", expVi:"Tên lá cờ Hàn Quốc là Taegukgi."},
-    {type:"mc", q:"한국의 나라꽃(국화)은 무엇입니까?", qVi:"Quốc hoa của Hàn Quốc là gì?",
-     options:["장미","무궁화","벚꽃","해바라기"], optionsVi:["Hoa hồng","Hoa mugunghwa","Hoa anh đào","Hoa hướng dương"], answer:1,
-     exp:"한국의 나라꽃은 무궁화입니다.", expVi:"Quốc hoa của Hàn Quốc là hoa mugunghwa."},
-    {type:"mc", q:"한국의 수도는 어디입니까?", qVi:"Thủ đô của Hàn Quốc là gì?",
-     options:["부산","서울","대구","인천"], optionsVi:["Busan","Seoul","Daegu","Incheon"], answer:1,
-     exp:"한국의 수도는 서울입니다.", expVi:"Thủ đô của Hàn Quốc là Seoul."},
-    {type:"mc", q:"한국의 정식 나라 이름은 무엇입니까?", qVi:"Tên nước chính thức của Hàn Quốc là gì?",
-     options:["대한민국","한국공화국","고려국","조선"], optionsVi:["Đại Hàn Dân Quốc","Cộng hòa Hàn Quốc","Nước Goryeo","Joseon"], answer:0,
-     exp:"한국의 정식 이름은 '대한민국'입니다.", expVi:"Tên chính thức của Hàn Quốc là 'Đại Hàn Dân Quốc'."},
-    {type:"mc", q:"한국의 돈(화폐) 단위는 무엇입니까?", qVi:"Đơn vị tiền Hàn Quốc là gì?",
-     options:["원","엔","위안","동"], optionsVi:["Won","Yên","Nhân dân tệ","Đồng"], answer:0,
-     exp:"한국 돈의 단위는 '원'입니다.", expVi:"Đơn vị tiền Hàn Quốc là 'Won'."},
-    {type:"mc", q:"한국의 대통령 임기는 몇 년입니까?", qVi:"Nhiệm kỳ Tổng thống Hàn Quốc là mấy năm?",
-     options:["4년","5년","6년","7년"], optionsVi:["4 năm","5 năm","6 năm","7 năm"], answer:1,
-     exp:"대통령의 임기는 5년입니다.", expVi:"Nhiệm kỳ Tổng thống là 5 năm."},
-    {type:"info", text:"이름이 무엇입니까?", textVi:"Tên của anh/chị là gì?",
-     sub:"정해진 답이 없는 질문이에요. 자기 이름을 자신 있게 말하는 연습을 해 보세요.",
-     subVi:"Câu hỏi không có đáp án cố định. Hãy luyện nói tên mình thật tự tin."}
-  ]
-},
-{
-  title: "2회 · 나라와 정부",
-  items: [
-    {type:"mc", q:"국회의원의 임기는 몇 년입니까?", qVi:"Nhiệm kỳ đại biểu Quốc hội là mấy năm?",
-     options:["2년","4년","5년","6년"], optionsVi:["2 năm","4 năm","5 năm","6 năm"], answer:1,
-     exp:"국회의원의 임기는 4년입니다.", expVi:"Nhiệm kỳ đại biểu Quốc hội là 4 năm."},
-    {type:"mc", q:"법을 만드는 곳은 어디입니까?", qVi:"Nơi làm ra luật là ở đâu?",
-     options:["국회","경찰서","은행","우체국"], optionsVi:["Quốc hội","Đồn cảnh sát","Ngân hàng","Bưu điện"], answer:0,
-     exp:"국회는 법을 만드는 곳입니다.", expVi:"Quốc hội là nơi làm ra luật."},
-    {type:"mc", q:"결혼한 것을 나라에 알리는 것을 무엇이라고 합니까?", qVi:"Việc báo cho nhà nước biết đã kết hôn gọi là gì?",
-     options:["출생신고","혼인신고","전입신고","이혼신고"], optionsVi:["Khai báo sinh","Khai báo kết hôn","Khai báo chuyển hộ khẩu","Khai báo ly hôn"], answer:1,
-     exp:"혼인신고는 결혼한 것을 관공서에 알리는 것입니다.", expVi:"Khai báo kết hôn là báo việc kết hôn cho cơ quan nhà nước."},
-    {type:"mc", q:"아기가 태어나면 한 달 안에 무엇을 해야 합니까?", qVi:"Khi em bé sinh ra, trong 1 tháng phải làm gì?",
-     options:["출생신고","혼인신고","전입신고","사망신고"], optionsVi:["Khai báo sinh","Khai báo kết hôn","Khai báo chuyển hộ khẩu","Khai báo tử vong"], answer:0,
-     exp:"아기가 태어나면 1개월 안에 출생신고를 해야 합니다.", expVi:"Khi trẻ sinh ra phải khai báo sinh trong 1 tháng."},
-    {type:"mc", q:"지방선거는 몇 년마다 합니까?", qVi:"Bầu cử địa phương bao nhiêu năm một lần?",
-     options:["2년","4년","5년","10년"], optionsVi:["2 năm","4 năm","5 năm","10 năm"], answer:1,
-     exp:"지방선거는 4년마다 실시합니다.", expVi:"Bầu cử địa phương tổ chức 4 năm một lần."},
-    {type:"mc", q:"외국인이 90일보다 오래 한국에 살려면 무엇을 만들어야 합니까?", qVi:"Người nước ngoài sống ở Hàn hơn 90 ngày phải làm gì?",
-     options:["외국인등록증","운전면허증","여권","은행 카드"], optionsVi:["Thẻ đăng ký người nước ngoài","Bằng lái xe","Hộ chiếu","Thẻ ngân hàng"], answer:0,
-     exp:"90일보다 오래 살면 외국인등록증을 만들어야 합니다.", expVi:"Nếu ở hơn 90 ngày phải làm thẻ đăng ký người nước ngoài."},
-    {type:"info", text:"가족이 몇 명입니까?", textVi:"Gia đình anh/chị có mấy người?",
-     sub:"정해진 답이 없어요. 자신의 가족 수를 자연스럽게 말해 보세요.",
-     subVi:"Không có đáp án cố định. Hãy nói số người trong gia đình mình một cách tự nhiên."}
-  ]
-},
-{
-  title: "3회 · 안전과 긴급전화",
-  items: [
-    {type:"mc", q:"경찰에 신고할 때 전화번호는 몇 번입니까?", qVi:"Số điện thoại báo cảnh sát là số nào?",
-     options:["119","112","114","120"], optionsVi:["119","112","114","120"], answer:1,
-     exp:"경찰 신고 번호는 112입니다.", expVi:"Số báo cảnh sát là 112."},
-    {type:"mc", q:"불이 나거나 아플 때 전화하는 번호는 몇 번입니까?", qVi:"Khi có cháy hoặc bị bệnh, gọi số nào?",
-     options:["112","119","114","110"], optionsVi:["112","119","114","110"], answer:1,
-     exp:"불이 나거나 아프면 119에 전화합니다.", expVi:"Khi có cháy hoặc bị bệnh thì gọi 119."},
-    {type:"mc", q:"쓰레기를 버릴 때 어떻게 해야 합니까?", qVi:"Khi vứt rác phải làm thế nào?",
-     options:["분리해서 정해진 곳에 버립니다","아무 곳에나 버립니다","태워 버립니다","땅에 묻습니다"],
-     optionsVi:["Phân loại rồi vứt đúng nơi quy định","Vứt ở đâu cũng được","Đốt đi","Chôn xuống đất"], answer:0,
-     exp:"쓰레기는 분리해서 정해진 곳에 버려야 합니다.", expVi:"Rác phải được phân loại rồi vứt đúng nơi quy định."},
-    {type:"mc", q:"쓰레기를 버릴 때 사용하는, 양에 따라 돈을 내는 봉투는 무엇입니까?", qVi:"Túi tính tiền theo khối lượng rác dùng khi vứt rác gọi là gì?",
-     options:["종량제봉투","재활용봉투","비닐봉투","선물봉투"], optionsVi:["Túi tính phí theo khối lượng","Túi tái chế","Túi ni lông","Túi quà"], answer:0,
-     exp:"종량제봉투는 쓰레기 양만큼 돈을 내는 봉투입니다.", expVi:"Túi tính phí theo khối lượng là túi trả tiền theo lượng rác."},
-    {type:"mc", q:"길에서 갑자기 아픈 사람을 보면 어떻게 해야 합니까?", qVi:"Nếu thấy người đột nhiên bị bệnh trên đường, phải làm gì?",
-     options:["119에 전화합니다","그냥 지나갑니다","사진을 찍습니다","혼자 병원에 데려갑니다"],
-     optionsVi:["Gọi điện 119","Đi qua luôn","Chụp ảnh","Tự đưa đến bệnh viện một mình"], answer:0,
-     exp:"위급할 때는 119에 전화해서 도움을 요청해야 합니다.", expVi:"Khi khẩn cấp phải gọi 119 để nhờ giúp đỡ."},
-    {type:"info", text:"책상 위에 있는 문장을 크게 읽어 보세요.", textVi:"Hãy đọc to đoạn văn trên bàn.",
-     sub:"면접에서 짧은 문장을 소리 내어 읽는 연습을 자주 하는 것이 좋아요.",
-     subVi:"Trong phỏng vấn nên luyện đọc to các câu văn ngắn thường xuyên."}
-  ]
-},
-{
-  title: "4회 · 전통 문화",
-  items: [
-    {type:"mc", q:"한글을 만든 사람은 누구입니까?", qVi:"Ai là người tạo ra chữ Hangeul?",
-     options:["이순신 장군","세종대왕","김구 선생님","유관순 열사"], optionsVi:["Tướng Yi Sun-sin","Vua Sejong Đại vương","Thầy Kim Gu","Liệt sĩ Yu Gwan-sun"], answer:1,
-     exp:"세종대왕이 한글을 만들었습니다.", expVi:"Vua Sejong Đại vương đã tạo ra chữ Hangeul."},
-    {type:"mc", q:"한국의 큰 명절이 아닌 것은 무엇입니까?", qVi:"Ngày nào KHÔNG phải là lễ lớn của Hàn Quốc?",
-     options:["설날","추석","할로윈","정월대보름"], optionsVi:["Tết Nguyên đán","Chuseok","Halloween","Rằm tháng Giêng"], answer:2,
-     exp:"할로윈은 서양 기념일이고 한국 전통 명절이 아닙니다.", expVi:"Halloween là ngày lễ phương Tây, không phải lễ truyền thống Hàn Quốc."},
-    {type:"mc", q:"설날에 어른들께 하는 인사는 무엇입니까?", qVi:"Vào Tết, con cháu làm gì để chào người lớn?",
-     options:["세배","제사","차례","성묘"], optionsVi:["Lạy chào năm mới (Sebae)","Cúng giỗ","Cúng Tết","Tảo mộ"], answer:0,
-     exp:"설날에는 어른들께 세배를 하고 세뱃돈을 받습니다.", expVi:"Vào Tết, con cháu lạy chào (Sebae) người lớn và nhận tiền mừng tuổi."},
-    {type:"mc", q:"한국의 전통 옷은 무엇입니까?", qVi:"Trang phục truyền thống Hàn Quốc là gì?",
-     options:["한복","기모노","아오자이","치파오"], optionsVi:["Hanbok","Kimono","Áo dài","Sườn xám"], answer:0,
-     exp:"한국의 전통 옷은 한복입니다.", expVi:"Trang phục truyền thống Hàn Quốc là Hanbok."},
-    {type:"mc", q:"4개의 나무 막대를 던져서 노는 한국 전통 놀이는 무엇입니까?", qVi:"Trò chơi truyền thống nào ném 4 cây gậy gỗ?",
-     options:["윷놀이","공기놀이","제기차기","팽이치기"], optionsVi:["Trò chơi Yut","Gonggi","Đá cầu","Đánh quay"], answer:0,
-     exp:"윷놀이는 4개의 윷가락을 던져서 노는 전통 놀이입니다.", expVi:"Yutnori là trò chơi truyền thống ném 4 cây gậy Yut."},
-    {type:"mc", q:"추석에 먹는 대표적인 떡은 무엇입니까?", qVi:"Bánh đặc trưng ăn vào Chuseok là gì?",
-     options:["송편","떡볶이","인절미","시루떡"], optionsVi:["Bánh Songpyeon","Tteokbokki","Injeolmi","Bánh hấp Sirutteok"], answer:0,
-     exp:"추석에는 송편이라는 떡을 만들어 먹습니다.", expVi:"Vào Chuseok người ta làm và ăn bánh Songpyeon."},
-    {type:"info", text:"한국에 온 지 몇 년 됐습니까?", textVi:"Anh/Chị sống ở Hàn được mấy năm rồi?",
-     sub:"정해진 답이 없어요. 실제 자신의 상황에 맞게 말해 보세요. (예: 3년 됐습니다.)",
-     subVi:"Không có đáp án cố định. Hãy nói theo tình hình thực tế của bản thân."}
-  ]
-},
-{
-  title: "5회 · 우리나라 자연",
-  items: [
-    {type:"mc", q:"한국에서 가장 높은 산은 무엇입니까?", qVi:"Núi cao nhất Hàn Quốc là núi nào?",
-     options:["백두산","지리산","한라산","설악산"], optionsVi:["Núi Baekdu","Núi Jiri","Núi Halla","Núi Seorak"], answer:2,
-     exp:"한라산은 제주도에 있는, 한국에서 가장 높은 산입니다.", expVi:"Núi Halla ở đảo Jeju là ngọn núi cao nhất Hàn Quốc."},
-    {type:"mc", q:"한국의 동쪽 바다 이름은 무엇입니까?", qVi:"Tên biển phía đông Hàn Quốc là gì?",
-     options:["서해","남해","동해","발해"], optionsVi:["Hoàng Hải","Biển Nam","Biển Đông (Donghae)","Balhae"], answer:2,
-     exp:"한국의 동쪽 바다는 동해입니다.", expVi:"Biển phía đông Hàn Quốc là Donghae."},
-    {type:"mc", q:"우리나라의 가장 동쪽에 있는 섬은 어디입니까?", qVi:"Đảo cực đông của Hàn Quốc là đảo nào?",
-     options:["울릉도","제주도","마라도","독도"], optionsVi:["Đảo Ulleungdo","Đảo Jeju","Đảo Marado","Đảo Dokdo"], answer:3,
-     exp:"독도는 대한민국의 가장 동쪽에 있는 섬입니다.", expVi:"Dokdo là đảo cực đông của Hàn Quốc."},
-    {type:"mc", q:"덥고 비가 많이 오는 계절은 언제입니까?", qVi:"Mùa nào nóng và mưa nhiều?",
-     options:["봄","여름","가을","겨울"], optionsVi:["Mùa xuân","Mùa hè","Mùa thu","Mùa đông"], answer:1,
-     exp:"여름은 덥고 비가 많이 오는 계절입니다.", expVi:"Mùa hè nóng và mưa nhiều."},
-    {type:"mc", q:"꽃이 피고 날씨가 따뜻해지는 계절은 언제입니까?", qVi:"Mùa nào hoa nở và trời ấm lên?",
-     options:["봄","여름","가을","겨울"], optionsVi:["Mùa xuân","Mùa hè","Mùa thu","Mùa đông"], answer:0,
-     exp:"봄에는 날씨가 따뜻해지고 꽃이 핍니다.", expVi:"Vào mùa xuân trời ấm lên và hoa nở."},
-    {type:"mc", q:"제주도에 있는 화산섬 산은 무엇입니까?", qVi:"Núi lửa nằm trên đảo Jeju là núi nào?",
-     options:["한라산","설악산","지리산","북한산"], optionsVi:["Núi Halla","Núi Seorak","Núi Jiri","Núi Bukhan"], answer:0,
-     exp:"한라산은 제주도에 있는 화산으로 만들어진 산입니다.", expVi:"Núi Halla là núi lửa nằm trên đảo Jeju."},
-    {type:"info", text:"고향이 어디입니까?", textVi:"Quê hương của anh/chị ở đâu?",
-     sub:"정해진 답이 없어요. 자신의 고향 나라와 도시 이름을 말해 보세요.",
-     subVi:"Không có đáp án cố định. Hãy nói tên quê hương và thành phố của mình."}
-  ]
-},
-{
-  title: "6회 · 학교와 교육",
-  items: [
-    {type:"mc", q:"모든 어린이가 갖는, 학교에서 배울 수 있는 권리는 무엇입니까?", qVi:"Quyền mà mọi trẻ em đều có, được học ở trường, gọi là gì?",
-     options:["교육받을 권리","운전할 권리","투표할 권리","여행할 권리"], optionsVi:["Quyền được giáo dục","Quyền lái xe","Quyền bầu cử","Quyền đi du lịch"], answer:0,
-     exp:"모든 어린이는 교육받을 권리가 있습니다.", expVi:"Mọi trẻ em đều có quyền được giáo dục."},
-    {type:"mc", q:"한국에서 초등학교는 몇 년 동안 다닙니까?", qVi:"Ở Hàn Quốc, tiểu học học mấy năm?",
-     options:["4년","6년","3년","5년"], optionsVi:["4 năm","6 năm","3 năm","5 năm"], answer:1,
-     exp:"한국의 초등학교는 6년 과정입니다.", expVi:"Tiểu học ở Hàn Quốc là 6 năm."},
-    {type:"mc", q:"중학교는 몇 년 동안 다닙니까?", qVi:"Trung học cơ sở học mấy năm?",
-     options:["2년","3년","4년","6년"], optionsVi:["2 năm","3 năm","4 năm","6 năm"], answer:1,
-     exp:"중학교는 3년 과정입니다.", expVi:"Trung học cơ sở là 3 năm."},
-    {type:"mc", q:"다문화 가정을 도와주는 기관은 무엇입니까?", qVi:"Cơ quan hỗ trợ gia đình đa văn hóa gọi là gì?",
-     options:["다문화가족지원센터","경찰서","우체국","은행"], optionsVi:["Trung tâm hỗ trợ gia đình đa văn hóa","Đồn cảnh sát","Bưu điện","Ngân hàng"], answer:0,
-     exp:"다문화가족지원센터는 다문화 가정을 돕는 기관입니다.", expVi:"Trung tâm hỗ trợ gia đình đa văn hóa giúp đỡ gia đình đa văn hóa."},
-    {type:"mc", q:"학교에 가지 않고 집에서 아이를 가르치는 사람을 무엇이라고 부릅니까?", qVi:"Người dạy con ở nhà thay vì đến trường gọi là gì?",
-     options:["학부모","선생님","교장선생님","교감선생님"], optionsVi:["Phụ huynh","Giáo viên","Hiệu trưởng","Phó hiệu trưởng"], answer:0,
-     exp:"아이를 키우고 가르치는 부모를 학부모라고 부릅니다.", expVi:"Cha mẹ nuôi dạy con được gọi là phụ huynh."},
-    {type:"info", text:"자녀가 다니는 학교 이름이 무엇입니까?", textVi:"Tên trường con anh/chị đang học là gì?",
-     sub:"정해진 답이 없어요. 실제 상황에 맞게 자연스럽게 말해 보세요.",
-     subVi:"Không có đáp án cố định. Hãy nói theo tình hình thực tế."}
-  ]
-},
-{
-  title: "7회 · 물건 사고팔기",
-  items: [
-    {type:"mc", q:"산 물건이 마음에 안 들어서 돈을 돌려받는 것을 무엇이라고 합니까?", qVi:"Việc trả lại hàng và nhận lại tiền gọi là gì?",
-     options:["환불","적립","보증금","위약금"], optionsVi:["Hoàn tiền","Tích điểm","Tiền đặt cọc","Tiền phạt"], answer:0,
-     exp:"환불은 물건을 돌려주고 돈을 돌려받는 것입니다.", expVi:"Hoàn tiền là trả lại hàng và nhận lại tiền."},
-    {type:"mc", q:"산 물건을 다른 물건으로 바꾸는 것을 무엇이라고 합니까?", qVi:"Việc đổi sản phẩm đã mua sang cái khác gọi là gì?",
-     options:["교환","환불","적립","기부"], optionsVi:["Đổi hàng","Hoàn tiền","Tích điểm","Quyên góp"], answer:0,
-     exp:"교환은 산 물건을 다른 물건으로 바꾸는 것입니다.", expVi:"Đổi hàng là đổi sản phẩm đã mua sang cái khác."},
-    {type:"mc", q:"음식이 안전하게 먹을 수 있는 기간을 무엇이라고 합니까?", qVi:"Thời hạn có thể ăn đồ ăn an toàn gọi là gì?",
-     options:["유통기한","제조일자","가격표","영수증"], optionsVi:["Hạn sử dụng","Ngày sản xuất","Bảng giá","Hóa đơn"], answer:0,
-     exp:"유통기한은 음식을 안전하게 먹을 수 있는 기간입니다.", expVi:"Hạn sử dụng là thời hạn có thể ăn đồ ăn an toàn."},
-    {type:"mc", q:"물건을 사면 받는, 돈을 낸 것을 증명하는 종이는 무엇입니까?", qVi:"Tờ giấy chứng minh đã trả tiền khi mua hàng gọi là gì?",
-     options:["영수증","전단지","광고지","명함"], optionsVi:["Hóa đơn","Tờ rơi","Tờ quảng cáo","Danh thiếp"], answer:0,
-     exp:"영수증은 물건값을 낸 것을 증명하는 종이입니다.", expVi:"Hóa đơn là giấy chứng minh đã trả tiền mua hàng."},
-    {type:"mc", q:"물건 값을 깎아 주는 것을 무엇이라고 합니까?", qVi:"Việc giảm giá món hàng gọi là gì?",
-     options:["할인","적립","환불","교환"], optionsVi:["Giảm giá","Tích điểm","Hoàn tiền","Đổi hàng"], answer:0,
-     exp:"할인은 물건 값을 깎아 주는 것입니다.", expVi:"Giảm giá là hạ giá món hàng."},
-    {type:"info", text:"자주 가는 시장이나 마트가 어디입니까?", textVi:"Anh/Chị hay đi chợ hoặc siêu thị nào?",
-     sub:"정해진 답이 없어요. 실제로 자주 가는 곳을 자연스럽게 말해 보세요.",
-     subVi:"Không có đáp án cố định. Hãy nói nơi mình thường đi."}
-  ]
-},
-{
-  title: "8회 · 훌륭한 사람들",
-  items: [
-    {type:"mc", q:"거북선을 만들고 일본과 싸운 장군은 누구입니까?", qVi:"Vị tướng đã tạo ra thuyền rùa và chiến đấu với Nhật Bản là ai?",
-     options:["이순신 장군","계백 장군","을지문덕 장군","강감찬 장군"], optionsVi:["Tướng Yi Sun-sin","Tướng Gyebaek","Tướng Eulji Mundeok","Tướng Gang Gam-chan"], answer:0,
-     exp:"이순신 장군은 거북선을 만들어 일본과 싸워 이긴 장군입니다.", expVi:"Tướng Yi Sun-sin đã tạo ra thuyền rùa và chiến thắng Nhật Bản."},
-    {type:"mc", q:"만세운동에 참여하다가 어린 나이에 세상을 떠난 여성 독립운동가는 누구입니까?", qVi:"Nữ chiến sĩ độc lập tham gia phong trào Manse và mất khi còn trẻ là ai?",
-     options:["유관순","신사임당","허난설헌","윤봉길"], optionsVi:["Yu Gwan-sun","Shin Saimdang","Heo Nanseolheon","Yun Bong-gil"], answer:0,
-     exp:"유관순은 3.1 만세운동에 참여한 독립운동가입니다.", expVi:"Yu Gwan-sun là chiến sĩ độc lập tham gia phong trào Manse ngày 1/3."},
-    {type:"mc", q:"대한민국 임시정부를 이끈 사람은 누구입니까?", qVi:"Ai là người lãnh đạo Chính phủ lâm thời Đại Hàn Dân Quốc?",
-     options:["김구","이순신","세종대왕","반기문"], optionsVi:["Kim Gu","Yi Sun-sin","Vua Sejong","Ban Ki-moon"], answer:0,
-     exp:"김구는 대한민국 임시정부를 이끈 지도자입니다.", expVi:"Kim Gu là lãnh đạo Chính phủ lâm thời Đại Hàn Dân Quốc."},
-    {type:"mc", q:"한국인 최초로 유엔 사무총장이 된 사람은 누구입니까?", qVi:"Ai là người Hàn Quốc đầu tiên làm Tổng thư ký Liên Hợp Quốc?",
-     options:["반기문","김대중","문재인","이승만"], optionsVi:["Ban Ki-moon","Kim Dae-jung","Moon Jae-in","Lee Seung-man"], answer:0,
-     exp:"반기문은 한국인 최초의 유엔 사무총장입니다.", expVi:"Ban Ki-moon là Tổng thư ký LHQ đầu tiên người Hàn."},
-    {type:"mc", q:"한국인 최초로 노벨 평화상을 받은 사람은 누구입니까?", qVi:"Ai là người Hàn Quốc đầu tiên nhận giải Nobel Hòa bình?",
-     options:["김대중 전 대통령","이승만 전 대통령","반기문","문재인 전 대통령"], optionsVi:["Cựu TT Kim Dae-jung","Cựu TT Lee Seung-man","Ban Ki-moon","Cựu TT Moon Jae-in"], answer:0,
-     exp:"김대중 전 대통령이 한국인 최초로 노벨 평화상을 받았습니다.", expVi:"Cựu Tổng thống Kim Dae-jung là người Hàn đầu tiên nhận Nobel Hòa bình."},
-    {type:"info", text:"존경하는 사람이 있습니까?", textVi:"Anh/Chị có người mình kính trọng không?",
-     sub:"정해진 답이 없어요. 자신이 존경하는 사람과 이유를 간단히 말해 보세요.",
-     subVi:"Không có đáp án cố định. Hãy nói người mình kính trọng và lý do đơn giản."}
-  ]
-},
-{
-  title: "9회 · 우리 동네",
-  items: [
-    {type:"mc", q:"동네에서 서류를 떼거나 신고를 하는 곳은 어디입니까?", qVi:"Nơi lấy giấy tờ hoặc khai báo ở khu phố là ở đâu?",
-     options:["주민센터","은행","병원","마트"], optionsVi:["Trung tâm cộng đồng (Jumin center)","Ngân hàng","Bệnh viện","Siêu thị"], answer:0,
-     exp:"주민센터는 서류 발급이나 신고를 하는 동네 관공서입니다.", expVi:"Trung tâm cộng đồng là nơi hành chính để lấy giấy tờ hoặc khai báo."},
-    {type:"mc", q:"편지나 소포를 보내는 곳은 어디입니까?", qVi:"Nơi gửi thư hoặc bưu kiện là ở đâu?",
-     options:["우체국","경찰서","소방서","시청"], optionsVi:["Bưu điện","Đồn cảnh sát","Trạm cứu hỏa","Tòa thị chính"], answer:0,
-     exp:"우체국은 편지나 소포를 보내는 곳입니다.", expVi:"Bưu điện là nơi gửi thư hoặc bưu kiện."},
-    {type:"mc", q:"돈을 저금하거나 찾는 곳은 어디입니까?", qVi:"Nơi gửi tiền hoặc rút tiền là ở đâu?",
-     options:["은행","학교","마트","약국"], optionsVi:["Ngân hàng","Trường học","Siêu thị","Hiệu thuốc"], answer:0,
-     exp:"은행은 돈을 저금하거나 찾는 곳입니다.", expVi:"Ngân hàng là nơi gửi hoặc rút tiền."},
-    {type:"mc", q:"아플 때 약을 사는 곳은 어디입니까?", qVi:"Khi bị bệnh, mua thuốc ở đâu?",
-     options:["약국","서점","문구점","빵집"], optionsVi:["Hiệu thuốc","Hiệu sách","Cửa hàng văn phòng phẩm","Tiệm bánh"], answer:0,
-     exp:"아플 때는 약국에서 약을 살 수 있습니다.", expVi:"Khi bị bệnh có thể mua thuốc ở hiệu thuốc."},
-    {type:"mc", q:"불이 났을 때 도와주는 기관은 어디입니까?", qVi:"Khi có cháy, cơ quan nào đến giúp?",
-     options:["소방서","은행","학교","우체국"], optionsVi:["Trạm cứu hỏa","Ngân hàng","Trường học","Bưu điện"], answer:0,
-     exp:"불이 나면 소방서(119)에서 도와줍니다.", expVi:"Khi có cháy, trạm cứu hỏa (119) sẽ giúp đỡ."},
-    {type:"info", text:"우리 동네에서 자주 가는 곳이 어디입니까?", textVi:"Nơi anh/chị hay đến trong khu phố là ở đâu?",
-     sub:"정해진 답이 없어요. 실제로 자주 가는 장소를 말해 보세요.",
-     subVi:"Không có đáp án cố định. Hãy nói nơi mình thường đến."}
-  ]
-},
-{
-  title: "10회 · 나에 대해 말하기",
-  items: [
-    {type:"info", text:"이름이 무엇입니까?", textVi:"Tên của anh/chị là gì?",
-     sub:"자기 이름을 또박또박 말하는 연습을 해 보세요.",
-     subVi:"Hãy luyện nói rõ ràng tên của mình."},
-    {type:"info", text:"한국에 온 지 몇 년 됐습니까?", textVi:"Anh/Chị sống ở Hàn được mấy năm rồi?",
-     sub:"실제 자신의 상황에 맞게 자연스럽게 말해 보세요.",
-     subVi:"Hãy nói theo tình hình thực tế của bản thân."},
-    {type:"info", text:"가족이 몇 명입니까?", textVi:"Gia đình anh/chị có mấy người?",
-     sub:"가족 구성원을 짧게 소개해 보세요. (예: 남편, 저, 아이 두 명입니다.)",
-     subVi:"Hãy giới thiệu ngắn gọn thành viên gia đình."},
-    {type:"info", text:"직업이 무엇입니까?", textVi:"Nghề nghiệp của anh/chị là gì?",
-     sub:"현재 하고 있는 일을 짧게 말해 보세요.",
-     subVi:"Hãy nói ngắn gọn công việc hiện tại của mình."},
-    {type:"info", text:"취미가 무엇입니까?", textVi:"Sở thích của anh/chị là gì?",
-     sub:"좋아하는 활동을 자연스럽게 말해 보세요.",
-     subVi:"Hãy nói tự nhiên về hoạt động mình thích."},
-    {type:"info", text:"한국 생활 중 가장 좋은 점은 무엇입니까?", textVi:"Điều tốt nhất khi sống ở Hàn Quốc là gì?",
-     sub:"자신의 경험을 바탕으로 짧게 말해 보세요.",
-     subVi:"Hãy nói ngắn gọn dựa trên trải nghiệm của bản thân."},
-    {type:"info", text:"앞으로의 꿈이나 계획이 있습니까?", textVi:"Anh/Chị có ước mơ hay kế hoạch nào cho tương lai không?",
-     sub:"정해진 답이 없어요. 자신의 생각을 편하게 말해 보세요.",
-     subVi:"Không có đáp án cố định. Hãy nói suy nghĩ của mình một cách thoải mái."}
-  ]
-}
+{title:"1회 · 상징물", items:[
+ {type:"mc", q:"한국의 정식 나라 이름은 무엇입니까?", qVi:"Tên nước chính thức của Hàn Quốc là gì?",
+  options:["대한민국","조선","고려연방","한국공화국"], optionsVi:["Đại Hàn Dân Quốc","Joseon","Liên bang Goryeo","Cộng hòa Hàn Quốc"], answer:0,
+  exp:"한국의 정식 이름은 '대한민국'입니다.", expVi:"Tên chính thức của Hàn Quốc là 'Đại Hàn Dân Quốc'."},
+ {type:"mc", q:"대한민국을 대표하는 상징 3가지는 무엇입니까?", qVi:"3 biểu tượng đại diện cho Hàn Quốc là gì?",
+  options:["태극기, 무궁화, 한글","태극기, 무궁화, 독도","한글, 애국가, 백두산","태극기, 한라산, 무궁화"],
+  optionsVi:["Taegukgi, Mugunghwa, Hangeul","Taegukgi, Mugunghwa, Dokdo","Hangeul, Quốc ca, núi Baekdu","Taegukgi, núi Halla, Mugunghwa"], answer:0,
+  exp:"대한민국의 대표 상징은 태극기(국기), 무궁화(국화), 한글(문자)입니다.", expVi:"3 biểu tượng đại diện là Taegukgi, Mugunghwa, Hangeul."},
+ {type:"mc", q:"태극 문양 둘레에 있는 검은색 4개의 무늬를 무엇이라고 부릅니까?", qVi:"4 quẻ đen xung quanh vòng tròn Thái Cực gọi là gì?",
+  options:["건곤감리","동서남북","천지인화","목화토금"], optionsVi:["Kiền Khôn Khảm Ly","Đông Tây Nam Bắc","Thiên Địa Nhân Hỏa","Mộc Hỏa Thổ Kim"], answer:0,
+  exp:"태극기 둘레의 4개 무늬 이름은 '건곤감리'입니다.", expVi:"4 quẻ quanh Thái Cực gọi là 'Kiền Khôn Khảm Ly'."},
+ {type:"mc", q:"태극기의 4괘 중 '건'은 무엇을 뜻합니까?", qVi:"Trong 4 quẻ của Taegukgi, quẻ 'Kiền' nghĩa là gì?",
+  options:["하늘","땅","물","불"], optionsVi:["Bầu trời","Đất","Nước","Lửa"], answer:0,
+  exp:"태극기 4괘: 건=하늘, 곤=땅, 감=물, 리=불입니다.", expVi:"4 quẻ Taegukgi: Kiền=trời, Khôn=đất, Khảm=nước, Ly=lửa."},
+ {type:"mc", q:"삼일절, 광복절 같은 국경일에 부르는 우리나라 노래(국가)의 이름은 무엇입니까?", qVi:"Tên bài quốc ca hát vào các ngày lễ như Samil, Giải phóng là gì?",
+  options:["애국가","아리랑","한오백년","진도아리랑"], optionsVi:["Aegukga (Quốc ca)","Arirang","Han-obaengnyeon","Jindo Arirang"], answer:0,
+  exp:"국경일에 부르는 우리나라의 노래(국가)는 애국가입니다.", expVi:"Bài hát quốc gia hát vào ngày lễ là Aegukga."},
+ {type:"mc", q:"대한민국의 나라꽃(국화)은 무엇입니까?", qVi:"Quốc hoa của Hàn Quốc là gì?",
+  options:["무궁화","장미","벚꽃","해바라기"], optionsVi:["Hoa mugunghwa","Hoa hồng","Hoa anh đào","Hoa hướng dương"], answer:0,
+  exp:"대한민국의 국화는 무궁화입니다.", expVi:"Quốc hoa của Hàn Quốc là hoa mugunghwa."},
+ {type:"mc", q:"'백성을 가르치는 바른 소리'라는 뜻으로 세종대왕이 1443년에 만든 글자의 이름은 무엇입니까?", qVi:"Tên chữ viết do vua Sejong tạo ra năm 1443, nghĩa là 'âm đúng dạy dân', là gì?",
+  options:["훈민정음","경국대전","조선왕조실록","팔만대장경"], optionsVi:["Hunminjeongeum","Gyeongguk Daejeon","Thực lục triều Joseon","Tam tạng kinh bản gỗ"], answer:0,
+  exp:"세종대왕이 1443년 만든 글자(한글)의 원래 이름은 훈민정음입니다.", expVi:"Tên gốc của chữ Hangeul do vua Sejong tạo năm 1443 là Hunminjeongeum."}
+]},
+{title:"2회 · 돈(화폐)", items:[
+ {type:"mc", q:"한국 돈의 단위는 무엇입니까?", qVi:"Đơn vị tiền Hàn Quốc là gì?",
+  options:["원","엔","위안","동"], optionsVi:["Won","Yên","Nhân dân tệ","Đồng"], answer:0,
+  exp:"한국 돈의 단위는 '원'입니다.", expVi:"Đơn vị tiền Hàn Quốc là 'Won'."},
+ {type:"mc", q:"한국에서 사용되는 지폐의 종류가 아닌 것은 무엇입니까?", qVi:"Đâu KHÔNG phải là loại tiền giấy dùng ở Hàn Quốc?",
+  options:["2만 원권","천 원권","오천 원권","오만 원권"], optionsVi:["Tờ 20.000 won (không tồn tại)","Tờ 1.000 won","Tờ 5.000 won","Tờ 50.000 won"], answer:0,
+  exp:"한국의 지폐는 천 원, 오천 원, 만 원, 오만 원 이렇게 4종류입니다.", expVi:"Tiền giấy Hàn Quốc có 4 loại: 1.000, 5.000, 10.000, 50.000 won."},
+ {type:"mc", q:"천 원권 지폐에 그려진 인물은 누구입니까?", qVi:"Ai được vẽ trên tờ 1.000 won?",
+  options:["퇴계 이황","율곡 이이","세종대왕","신사임당"], optionsVi:["Toegye Yi Hwang","Yulgok Yi I","Vua Sejong","Sin Saimdang"], answer:0,
+  exp:"천 원권에는 퇴계 이황이 그려져 있습니다.", expVi:"Trên tờ 1.000 won có hình Toegye Yi Hwang."},
+ {type:"mc", q:"신사임당의 아들이며 오천 원권에 그려진 인물은 누구입니까?", qVi:"Con trai của bà Sin Saimdang, được vẽ trên tờ 5.000 won, là ai?",
+  options:["율곡 이이","퇴계 이황","세종대왕","정약용"], optionsVi:["Yulgok Yi I","Toegye Yi Hwang","Vua Sejong","Jeong Yak-yong"], answer:0,
+  exp:"오천 원권에는 신사임당의 아들인 율곡 이이가 그려져 있습니다.", expVi:"Trên tờ 5.000 won có hình Yulgok Yi I, con trai bà Sin Saimdang."},
+ {type:"mc", q:"만 원권 지폐에 그려진 인물은 누구입니까?", qVi:"Ai được vẽ trên tờ 10.000 won?",
+  options:["세종대왕","퇴계 이황","율곡 이이","신사임당"], optionsVi:["Vua Sejong","Toegye Yi Hwang","Yulgok Yi I","Sin Saimdang"], answer:0,
+  exp:"만 원권에는 세종대왕이 그려져 있습니다.", expVi:"Trên tờ 10.000 won có hình Vua Sejong."},
+ {type:"mc", q:"글과 그림에 뛰어났던 조선시대 여성으로 오만 원권에 그려진 인물은 누구입니까?", qVi:"Người phụ nữ thời Joseon giỏi viết và vẽ, được in trên tờ 50.000 won, là ai?",
+  options:["신사임당","퇴계 이황","율곡 이이","세종대왕"], optionsVi:["Sin Saimdang","Toegye Yi Hwang","Yulgok Yi I","Vua Sejong"], answer:0,
+  exp:"오만 원권에는 신사임당이 그려져 있습니다.", expVi:"Trên tờ 50.000 won có hình Sin Saimdang."},
+ {type:"mc", q:"실제로 거래할 때 사용되는 한국의 동전 종류가 아닌 것은 무엇입니까?", qVi:"Đâu KHÔNG phải là loại tiền xu thực tế dùng ở Hàn Quốc?",
+  options:["1000원","10원","100원","500원"], optionsVi:["1000 won (không phải xu)","10 won","100 won","500 won"], answer:0,
+  exp:"실제 사용되는 동전은 10원, 50원, 100원, 500원입니다. 1000원은 지폐입니다.", expVi:"Tiền xu dùng thực tế gồm 10, 50, 100, 500 won. 1000 won là tiền giấy."}
+]},
+{title:"3회 · 지형", items:[
+ {type:"mc", q:"제주도에 있으며 한국에서 가장 높은 산은 무엇입니까?", qVi:"Núi cao nhất Hàn Quốc, nằm ở đảo Jeju, là núi nào?",
+  options:["한라산","백두산","지리산","설악산"], optionsVi:["Núi Halla","Núi Baekdu","Núi Jiri","Núi Seorak"], answer:0,
+  exp:"한라산은 제주도에 있는 한국에서 가장 높은 산입니다.", expVi:"Núi Halla ở đảo Jeju là ngọn núi cao nhất Hàn Quốc."},
+ {type:"mc", q:"북한과 중국의 경계에 있으며 북한에서 가장 높은 산은 무엇입니까?", qVi:"Núi nằm ở biên giới Bắc Triều Tiên và Trung Quốc, cao nhất Bắc Triều Tiên, là núi nào?",
+  options:["백두산","한라산","지리산","금강산"], optionsVi:["Núi Baekdu","Núi Halla","Núi Jiri","Núi Kumgang"], answer:0,
+  exp:"백두산은 북한과 중국의 경계에 있는, 북한에서 가장 높은 산입니다.", expVi:"Núi Baekdu ở biên giới Bắc Triều Tiên - Trung Quốc, là núi cao nhất Bắc Triều Tiên."},
+ {type:"mc", q:"우리나라에서 가장 남쪽에 있는 작고 외딴 섬은 어디입니까?", qVi:"Hòn đảo nhỏ, xa xôi ở cực nam Hàn Quốc là đảo nào?",
+  options:["마라도","독도","울릉도","제주도"], optionsVi:["Đảo Marado","Đảo Dokdo","Đảo Ulleungdo","Đảo Jeju"], answer:0,
+  exp:"마라도는 우리나라의 가장 남쪽에 있는 작은 섬입니다.", expVi:"Marado là đảo nhỏ ở cực nam Hàn Quốc."},
+ {type:"mc", q:"우리나라의 가장 동쪽에 있으며 일본과 영토 문제가 있는 섬은 어디입니까?", qVi:"Đảo cực đông của Hàn Quốc, đang có vấn đề lãnh thổ với Nhật Bản, là đảo nào?",
+  options:["독도","마라도","울릉도","거제도"], optionsVi:["Đảo Dokdo","Đảo Marado","Đảo Ulleungdo","Đảo Geoje"], answer:0,
+  exp:"독도는 우리나라의 가장 동쪽에 있는 섬입니다.", expVi:"Dokdo là đảo cực đông của Hàn Quốc."}
+]},
+{title:"4회 · 국경일과 기념일", items:[
+ {type:"mc", q:"3월 1일, 독립만세운동이 일어난 것을 기념하는 날은 무슨 날입니까?", qVi:"Ngày 1 tháng 3, kỷ niệm phong trào độc lập, là ngày gì?",
+  options:["삼일절","광복절","제헌절","한글날"], optionsVi:["Ngày Samil","Ngày Giải phóng","Ngày Chế hiến","Ngày Hangeul"], answer:0,
+  exp:"3월 1일은 1919년 독립만세운동을 기념하는 삼일절입니다.", expVi:"Ngày 1/3 là Ngày Samil, kỷ niệm phong trào độc lập năm 1919."},
+ {type:"mc", q:"1948년 헌법을 처음 만들어 발표한 것을 기념하는 날은 무슨 날입니까?", qVi:"Ngày kỷ niệm việc ban hành Hiến pháp đầu tiên năm 1948 là ngày gì?",
+  options:["제헌절","삼일절","광복절","개천절"], optionsVi:["Ngày Chế hiến","Ngày Samil","Ngày Giải phóng","Ngày Gaecheon"], answer:0,
+  exp:"7월 17일은 최초의 헌법을 만들어 발표한 것을 기념하는 제헌절입니다.", expVi:"Ngày 17/7 là Ngày Chế hiến, kỷ niệm việc ban hành Hiến pháp đầu tiên."},
+ {type:"mc", q:"한글의 우수성을 세상에 알린 것을 기념하는 날은 무슨 날입니까?", qVi:"Ngày kỷ niệm việc cho thế giới biết sự xuất sắc của Hangeul là ngày gì?",
+  options:["한글날","삼일절","개천절","광복절"], optionsVi:["Ngày Hangeul","Ngày Samil","Ngày Gaecheon","Ngày Giải phóng"], answer:0,
+  exp:"10월 9일은 한글의 우수성을 기념하는 한글날입니다.", expVi:"Ngày 9/10 là Ngày Hangeul."},
+ {type:"mc", q:"1945년 일본의 지배에서 벗어나 독립한 것을 기념하는 날은 무슨 날입니까?", qVi:"Ngày kỷ niệm độc lập khỏi Nhật Bản năm 1945 là ngày gì?",
+  options:["광복절","삼일절","한글날","개천절"], optionsVi:["Ngày Giải phóng","Ngày Samil","Ngày Hangeul","Ngày Gaecheon"], answer:0,
+  exp:"8월 15일은 일본의 식민 지배에서 벗어나 독립한 것을 기념하는 광복절입니다.", expVi:"Ngày 15/8 là Ngày Giải phóng khỏi ách thống trị Nhật Bản."},
+ {type:"mc", q:"일본은 우리나라를 몇 년 동안 식민 지배했습니까?", qVi:"Nhật Bản đã đô hộ Hàn Quốc trong bao nhiêu năm?",
+  options:["35년","10년","50년","20년"], optionsVi:["35 năm","10 năm","50 năm","20 năm"], answer:0,
+  exp:"일본은 우리나라를 35년간 식민 지배했습니다.", expVi:"Nhật Bản đã đô hộ Hàn Quốc trong 35 năm."},
+ {type:"mc", q:"단군이 고조선을 세운 것을 기념하는 날은 무슨 날입니까?", qVi:"Ngày kỷ niệm việc vua Dangun lập nước Gojoseon là ngày gì?",
+  options:["개천절","한글날","제헌절","삼일절"], optionsVi:["Ngày Gaecheon","Ngày Hangeul","Ngày Chế hiến","Ngày Samil"], answer:0,
+  exp:"10월 3일은 고조선 건국을 기념하는 개천절입니다.", expVi:"Ngày 3/10 là Ngày Gaecheon, kỷ niệm lập nước Gojoseon."},
+ {type:"mc", q:"어린이날을 만든 사람은 누구입니까?", qVi:"Ai là người đã tạo ra ngày Tết Thiếu nhi?",
+  options:["방정환","세종대왕","안중근","김구"], optionsVi:["Bang Jeong-hwan","Vua Sejong","An Jung-geun","Kim Gu"], answer:0,
+  exp:"어린이날은 방정환이 만들었습니다.", expVi:"Ngày Tết Thiếu nhi do Bang Jeong-hwan tạo ra."},
+ {type:"mc", q:"나라를 위해 목숨을 바친 군인들을 기리는 날은 무슨 날입니까?", qVi:"Ngày tôn vinh những người lính đã hy sinh vì đất nước là ngày gì?",
+  options:["현충일","어린이날","한글날","제헌절"], optionsVi:["Ngày tưởng niệm liệt sĩ","Tết Thiếu nhi","Ngày Hangeul","Ngày Chế hiến"], answer:0,
+  exp:"현충일은 나라를 위해 목숨을 바친 국군 장병들을 기리는 날입니다.", expVi:"Ngày tưởng niệm liệt sĩ tôn vinh những quân nhân đã hy sinh vì đất nước."}
+]},
+{title:"5회 · 고조선", items:[
+ {type:"mc", q:"기원전 2333년에 세워진, 우리나라 역사상 최초의 나라는 무엇입니까?", qVi:"Nước đầu tiên trong lịch sử Hàn Quốc, lập năm 2333 TCN, là nước nào?",
+  options:["고조선","고구려","백제","신라"], optionsVi:["Gojoseon","Goguryeo","Baekje","Silla"], answer:0,
+  exp:"고조선은 기원전 2333년에 세워진 우리나라 최초의 나라입니다.", expVi:"Gojoseon là nước đầu tiên của Hàn Quốc, lập năm 2333 TCN."},
+ {type:"mc", q:"고조선을 세운 사람은 누구입니까?", qVi:"Ai là người lập ra Gojoseon?",
+  options:["단군왕검","주몽","박혁거세","왕건"], optionsVi:["Dangun Wanggeom","Jumong","Park Hyeokgeose","Wang Geon"], answer:0,
+  exp:"고조선은 단군왕검이 세웠습니다.", expVi:"Gojoseon do Dangun Wanggeom lập ra."},
+ {type:"mc", q:"단군의 출생과 고조선 건국 이야기에 나오는 두 동물은 무엇입니까?", qVi:"Hai con vật xuất hiện trong câu chuyện về sự ra đời của Dangun và lập nước Gojoseon là gì?",
+  options:["곰과 호랑이","호랑이와 사슴","곰과 여우","용과 호랑이"], optionsVi:["Gấu và hổ","Hổ và hươu","Gấu và cáo","Rồng và hổ"], answer:0,
+  exp:"단군신화에는 곰과 호랑이가 나오며, 이 이야기는 삼국유사에 전해집니다.", expVi:"Truyền thuyết Dangun có gấu và hổ, được ghi trong sách Samguk Yusa."}
+]},
+{title:"6회 · 삼국시대", items:[
+ {type:"mc", q:"삼국시대에 있었던 세 나라는 무엇입니까?", qVi:"3 nước trong thời Tam Quốc là những nước nào?",
+  options:["고구려, 백제, 신라","고구려, 발해, 신라","백제, 가야, 발해","신라, 고려, 조선"],
+  optionsVi:["Goguryeo, Baekje, Silla","Goguryeo, Balhae, Silla","Baekje, Gaya, Balhae","Silla, Goryeo, Joseon"], answer:0,
+  exp:"삼국시대의 세 나라는 고구려, 백제, 신라입니다.", expVi:"3 nước thời Tam Quốc là Goguryeo, Baekje, Silla."},
+ {type:"mc", q:"'활을 잘 쏘는 사람'이라는 뜻을 가진, 고구려를 세운 왕의 이름은 무엇입니까?", qVi:"Vị vua lập ra Goguryeo, tên có nghĩa là 'người bắn giỏi', là ai?",
+  options:["주몽","온조왕","박혁거세","왕건"], optionsVi:["Jumong","Vua Onjo","Park Hyeokgeose","Wang Geon"], answer:0,
+  exp:"주몽은 '활을 잘 쏘는 사람'이라는 뜻으로, 고구려를 세운 왕입니다.", expVi:"Jumong nghĩa là 'người bắn giỏi', là vua lập ra Goguryeo."},
+ {type:"mc", q:"고구려를 세운 주몽의 아들이며 백제를 세운 왕은 누구입니까?", qVi:"Con trai của Jumong, người lập ra Baekje, là ai?",
+  options:["온조왕","주몽","박혁거세","견훤"], optionsVi:["Vua Onjo","Jumong","Park Hyeokgeose","Gyeon Hwon"], answer:0,
+  exp:"온조왕은 주몽의 아들로, 백제를 세운 왕입니다.", expVi:"Vua Onjo là con trai Jumong, người lập ra Baekje."},
+ {type:"mc", q:"경주에서 신라를 세운 왕은 누구입니까?", qVi:"Vị vua lập ra Silla tại Gyeongju là ai?",
+  options:["박혁거세","주몽","온조왕","왕건"], optionsVi:["Park Hyeokgeose","Jumong","Vua Onjo","Wang Geon"], answer:0,
+  exp:"박혁거세는 경주에서 신라를 세운 왕입니다.", expVi:"Park Hyeokgeose là vua lập ra Silla tại Gyeongju."},
+ {type:"mc", q:"삼국 중 가장 먼저 발전했으며, 중국과 교류하고 일본에 문화적으로 영향을 준 나라는 어디입니까?", qVi:"Nước phát triển sớm nhất trong Tam Quốc, giao lưu với Trung Quốc và ảnh hưởng văn hóa đến Nhật Bản, là nước nào?",
+  options:["백제","고구려","신라","가야"], optionsVi:["Baekje","Goguryeo","Silla","Gaya"], answer:0,
+  exp:"백제는 삼국 중 가장 먼저 발전했으며, 중국과 교류하고 일본에 문화적 영향을 주었습니다.", expVi:"Baekje phát triển sớm nhất, giao lưu với Trung Quốc và ảnh hưởng văn hóa đến Nhật Bản."},
+ {type:"mc", q:"가장 늦게 발전했지만 화랑도의 힘으로 삼국을 통일한 나라는 어디입니까?", qVi:"Nước phát triển muộn nhất nhưng đã thống nhất Tam Quốc nhờ sức mạnh Hwarangdo là nước nào?",
+  options:["신라","백제","고구려","가야"], optionsVi:["Silla","Baekje","Goguryeo","Gaya"], answer:0,
+  exp:"신라는 화랑도를 기반으로 삼국을 통일했습니다.", expVi:"Silla đã thống nhất Tam Quốc dựa trên tổ chức Hwarangdo."},
+ {type:"mc", q:"화랑제도, 석굴암, 불국사, 다보탑이 있었던 나라는 어디입니까?", qVi:"Nước có chế độ Hwarang, động Seokguram, chùa Bulguksa, tháp Dabotap là nước nào?",
+  options:["신라","백제","고구려","고려"], optionsVi:["Silla","Baekje","Goguryeo","Goryeo"], answer:0,
+  exp:"석굴암, 불국사, 다보탑은 신라의 대표 문화유산입니다.", expVi:"Seokguram, Bulguksa, Dabotap là di sản văn hóa tiêu biểu của Silla."},
+ {type:"mc", q:"신라 시대의 청소년 조직으로 '꽃처럼 아름다운 남성 무리'라는 뜻을 가진 단체는 무엇입니까?", qVi:"Tổ chức thanh niên thời Silla, nghĩa là 'đoàn thanh niên đẹp như hoa', là gì?",
+  options:["화랑도","향도","두레","계"], optionsVi:["Hwarangdo","Hyangdo","Dure","Gye"], answer:0,
+  exp:"화랑도는 신라의 청소년 조직으로, '꽃처럼 아름다운 남성 무리'라는 뜻입니다.", expVi:"Hwarangdo là tổ chức thanh niên thời Silla, nghĩa là 'đoàn thanh niên đẹp như hoa'."},
+ {type:"mc", q:"신라 진흥왕이 인재를 기르기 위해 청소년을 대상으로 만든 제도는 무엇입니까?", qVi:"Chế độ vua Jinheung của Silla lập ra để bồi dưỡng nhân tài thanh thiếu niên là gì?",
+  options:["화랑제도","과거제도","골품제도","화백제도"], optionsVi:["Chế độ Hwarang","Chế độ khoa cử","Chế độ Golpum","Chế độ Hwabaek"], answer:0,
+  exp:"화랑제도는 신라 진흥왕이 인재 양성을 위해 만든 청소년 제도입니다.", expVi:"Chế độ Hwarang do vua Jinheung lập ra để bồi dưỡng nhân tài thanh thiếu niên."}
+]},
+{title:"7회 · 고려시대", items:[
+ {type:"mc", q:"영어 'Korea'처럼 세계에서 부르는 한국의 이름은 어느 나라에서 유래했습니까?", qVi:"Tên 'Korea' mà thế giới gọi Hàn Quốc bắt nguồn từ tên nước nào?",
+  options:["고려","고구려","조선","신라"], optionsVi:["Goryeo","Goguryeo","Joseon","Silla"], answer:0,
+  exp:"'Korea'라는 이름은 '고려'에서 유래되었습니다.", expVi:"Tên 'Korea' bắt nguồn từ tên nước 'Goryeo'."},
+ {type:"mc", q:"후삼국을 통일하고 고려를 세운 왕은 누구입니까?", qVi:"Vị vua thống nhất Hậu Tam Quốc và lập ra Goryeo là ai?",
+  options:["왕건","이성계","궁예","견훤"], optionsVi:["Wang Geon","Yi Seong-gye","Gungye","Gyeon Hwon"], answer:0,
+  exp:"왕건은 후삼국을 통일하고 고려를 세운 왕입니다.", expVi:"Wang Geon là vị vua thống nhất Hậu Tam Quốc và lập ra Goryeo."}
+]},
+{title:"8회 · 조선시대", items:[
+ {type:"mc", q:"수도를 개성에서 한양(지금의 서울)으로 옮기고 조선을 세운 왕은 누구입니까?", qVi:"Vị vua đã dời đô từ Gaeseong về Hanyang (Seoul ngày nay) và lập nên Joseon là ai?",
+  options:["이성계","왕건","단군왕검","김구"], optionsVi:["Yi Seong-gye","Wang Geon","Dangun Wanggeom","Kim Gu"], answer:0,
+  exp:"이성계는 수도를 한양으로 옮기고 조선을 세운 왕입니다.", expVi:"Yi Seong-gye đã dời đô về Hanyang và lập ra Joseon."},
+ {type:"mc", q:"임진왜란 때 거북선을 만들어 일본군을 물리치고 한산도대첩, 노량해전에서 승리한 인물은 누구입니까?", qVi:"Ai đã tạo ra thuyền rùa để đánh bại quân Nhật và giành chiến thắng ở trận Hansando, Noryang trong loạn Imjin?",
+  options:["이순신 장군","계백 장군","을지문덕 장군","강감찬 장군"], optionsVi:["Tướng Yi Sun-sin","Tướng Gyebaek","Tướng Eulji Mundeok","Tướng Gang Gam-chan"], answer:0,
+  exp:"이순신 장군은 거북선을 만들어 한산도대첩, 노량해전에서 일본군을 물리쳤습니다.", expVi:"Tướng Yi Sun-sin đã dùng thuyền rùa để thắng trận Hansando, Noryang."},
+ {type:"mc", q:"조선시대에 백성이 억울한 일을 임금에게 알리기 위해 사용했던 것은 무엇입니까?", qVi:"Vật mà người dân thời Joseon dùng để trình bày nỗi oan ức của mình với vua là gì?",
+  options:["신문고(북)","꽹과리","징","장구"], optionsVi:["Trống Sinmungo","Kkwaenggwari","Jing","Janggu"], answer:0,
+  exp:"신문고는 백성이 억울한 일을 임금에게 알리기 위해 치던 북입니다.", expVi:"Sinmungo là trống dân đánh để trình bày nỗi oan ức với vua."}
+]},
+{title:"9회 · 삼일운동과 임시정부", items:[
+ {type:"mc", q:"중국 하얼빈역에서 일본 인물 이토 히로부미를 사살한 사람은 누구입니까?", qVi:"Ai đã bắn chết nhân vật người Nhật Ito Hirobumi tại ga Harbin, Trung Quốc?",
+  options:["안중근","윤봉길","김구","유관순"], optionsVi:["An Jung-geun","Yun Bong-gil","Kim Gu","Yu Gwan-sun"], answer:0,
+  exp:"안중근은 하얼빈역에서 이토 히로부미를 사살했습니다.", expVi:"An Jung-geun đã bắn chết Ito Hirobumi tại ga Harbin."},
+ {type:"mc", q:"중국 상하이 훙커우 공원에서 폭탄을 던져 일본의 중요 인물을 죽인 독립운동가는 누구입니까?", qVi:"Nhà hoạt động độc lập nào đã ném bom tại công viên Hồng Khẩu, Thượng Hải, giết chết nhân vật quan trọng của Nhật?",
+  options:["윤봉길","안중근","김구","유관순"], optionsVi:["Yun Bong-gil","An Jung-geun","Kim Gu","Yu Gwan-sun"], answer:0,
+  exp:"윤봉길은 상하이 훙커우 공원에서 폭탄을 던진 독립운동가입니다.", expVi:"Yun Bong-gil là nhà hoạt động độc lập đã ném bom tại công viên Hồng Khẩu, Thượng Hải."},
+ {type:"mc", q:"1919년 삼일운동 직후 중국 상하이에 대한민국 임시정부를 세우고 독립을 위해 힘쓴 사람은 누구입니까?", qVi:"Ai đã lập Chính phủ lâm thời Đại Hàn tại Thượng Hải sau phong trào Samil 1919 và đấu tranh vì độc lập?",
+  options:["김구","안중근","윤봉길","유관순"], optionsVi:["Kim Gu","An Jung-geun","Yun Bong-gil","Yu Gwan-sun"], answer:0,
+  exp:"김구는 상하이에 대한민국 임시정부를 세우고 독립운동을 이끌었습니다.", expVi:"Kim Gu đã lập Chính phủ lâm thời Đại Hàn tại Thượng Hải và lãnh đạo phong trào độc lập."},
+ {type:"mc", q:"삼일운동에 참여해 아우내 장터 만세운동을 이끌다 붙잡혀 18세에 옥중에서 순국한 여성은 누구입니까?", qVi:"Người phụ nữ đã lãnh đạo phong trào Manse ở chợ Aune, bị bắt và hy sinh trong tù năm 18 tuổi là ai?",
+  options:["유관순","안중근","윤봉길","김구"], optionsVi:["Yu Gwan-sun","An Jung-geun","Yun Bong-gil","Kim Gu"], answer:0,
+  exp:"유관순은 아우내 장터 만세운동을 이끌고 18세에 옥중에서 순국했습니다.", expVi:"Yu Gwan-sun lãnh đạo phong trào Manse ở chợ Aune và hy sinh trong tù năm 18 tuổi."},
+ {type:"mc", q:"1919년 서울 탑골공원에서 시작된, '대한 독립 만세'를 외친 대규모 운동은 무엇입니까?", qVi:"Phong trào quy mô lớn hô vang 'Đại Hàn độc lập vạn tuế' bắt đầu tại công viên Tapgol, Seoul năm 1919 là gì?",
+  options:["삼일운동","광복절","한글날","현충일"], optionsVi:["Phong trào Samil","Ngày Giải phóng","Ngày Hangeul","Ngày tưởng niệm liệt sĩ"], answer:0,
+  exp:"삼일운동은 1919년 탑골공원에서 시작된 대규모 만세운동입니다.", expVi:"Phong trào Samil là phong trào Manse quy mô lớn bắt đầu tại công viên Tapgol năm 1919."}
+]},
+{title:"10회 · 6.25전쟁", items:[
+ {type:"mc", q:"북한이 소련과 중국의 지원을 받아 남한을 공격하며 시작된 전쟁은 언제 일어났습니까?", qVi:"Chiến tranh do Bắc Triều Tiên tấn công Nam Hàn với sự hỗ trợ của Liên Xô, Trung Quốc, bắt đầu khi nào?",
+  options:["1950년 6월 25일","1945년 8월 15일","1953년 7월 27일","1919년 3월 1일"],
+  optionsVi:["Ngày 25/6/1950","Ngày 15/8/1945","Ngày 27/7/1953","Ngày 1/3/1919"], answer:0,
+  exp:"6.25전쟁은 1950년 6월 25일에 시작되었습니다.", expVi:"Chiến tranh 6.25 bắt đầu ngày 25/6/1950."},
+ {type:"mc", q:"6.25전쟁과 관련된 단어가 아닌 것은 무엇입니까?", qVi:"Từ nào KHÔNG liên quan đến chiến tranh 6.25?",
+  options:["훈민정음","이산가족","휴전선","현충일"], optionsVi:["Hunminjeongeum","Gia đình ly tán","Đường ranh giới quân sự","Ngày tưởng niệm liệt sĩ"], answer:0,
+  exp:"이산가족, 휴전선, 현충일은 6.25전쟁과 관련된 단어입니다.", expVi:"Gia đình ly tán, đường ranh giới, ngày tưởng niệm liên quan đến chiến tranh 6.25."}
+]},
+{title:"11회 · 대한민국 정부", items:[
+ {type:"mc", q:"대한민국의 첫 번째(초대) 대통령은 누구입니까?", qVi:"Tổng thống đầu tiên của Đại Hàn Dân Quốc là ai?",
+  options:["이승만","김구","이순신","반기문"], optionsVi:["Lee Seung-man","Kim Gu","Yi Sun-sin","Ban Ki-moon"], answer:0,
+  exp:"이승만은 대한민국의 초대 대통령입니다.", expVi:"Lee Seung-man là Tổng thống đầu tiên của Đại Hàn Dân Quốc."},
+ {type:"mc", q:"한국인 최초의 유엔 사무총장은 누구입니까?", qVi:"Ai là người Hàn Quốc đầu tiên làm Tổng thư ký Liên Hợp Quốc?",
+  options:["반기문","이승만","김대중","김구"], optionsVi:["Ban Ki-moon","Lee Seung-man","Kim Dae-jung","Kim Gu"], answer:0,
+  exp:"반기문은 한국인 최초의 유엔 사무총장입니다.", expVi:"Ban Ki-moon là Tổng thư ký LHQ đầu tiên người Hàn."},
+ {type:"mc", q:"한국인 역사상 최초로 노벨평화상을 받은 사람은 누구입니까?", qVi:"Ai là người Hàn Quốc đầu tiên trong lịch sử nhận giải Nobel Hòa bình?",
+  options:["김대중 전 대통령","이승만 전 대통령","반기문","문재인 전 대통령"], optionsVi:["Cựu TT Kim Dae-jung","Cựu TT Lee Seung-man","Ban Ki-moon","Cựu TT Moon Jae-in"], answer:0,
+  exp:"김대중 전 대통령은 한국인 최초로 노벨평화상을 받았습니다.", expVi:"Cựu Tổng thống Kim Dae-jung là người Hàn đầu tiên nhận Nobel Hòa bình."}
+]},
+{title:"12회 · 가족 호칭과 촌수", items:[
+ {type:"mc", q:"아내가 남편의 어머니를 부르는 말은 무엇입니까?", qVi:"Vợ gọi mẹ chồng là gì?",
+  options:["어머님","장모님","아버님","이모님"], optionsVi:["Eomeonim","Jangmonim","Abeonim","Imonim"], answer:0,
+  exp:"아내는 남편의 어머니를 '어머님'이라고 부릅니다.", expVi:"Vợ gọi mẹ chồng là 'Eomeonim'."},
+ {type:"mc", q:"아내가 남편의 아버지를 부르는 말은 무엇입니까?", qVi:"Vợ gọi bố chồng là gì?",
+  options:["아버님","장인어른","어머님","삼촌"], optionsVi:["Abeonim","Jangin eoreun","Eomeonim","Samchon"], answer:0,
+  exp:"아내는 남편의 아버지를 '아버님'이라고 부릅니다.", expVi:"Vợ gọi bố chồng là 'Abeonim'."},
+ {type:"mc", q:"남편이 아내의 어머니를 부르는 말은 무엇입니까?", qVi:"Chồng gọi mẹ vợ là gì?",
+  options:["장모님","어머님","이모님","고모님"], optionsVi:["Jangmonim","Eomeonim","Imonim","Gomonim"], answer:0,
+  exp:"남편은 아내의 어머니를 '장모님'이라고 부릅니다.", expVi:"Chồng gọi mẹ vợ là 'Jangmonim'."},
+ {type:"mc", q:"남편이 아내의 아버지를 부르는 말은 무엇입니까?", qVi:"Chồng gọi bố vợ là gì?",
+  options:["장인어른","아버님","삼촌","외삼촌"], optionsVi:["Jangin eoreun","Abeonim","Samchon","Oesamchon"], answer:0,
+  exp:"남편은 아내의 아버지를 '장인어른'이라고 부릅니다.", expVi:"Chồng gọi bố vợ là 'Jangin eoreun'."},
+ {type:"mc", q:"부모와 자녀 사이는 몇 촌입니까?", qVi:"Giữa cha mẹ và con cái là mấy 'chon'?",
+  options:["1촌","2촌","3촌","4촌"], optionsVi:["1 chon","2 chon","3 chon","4 chon"], answer:0,
+  exp:"부모와 자녀 사이는 1촌입니다.", expVi:"Giữa cha mẹ và con cái là 1 chon."},
+ {type:"mc", q:"형제, 자매 사이는 몇 촌입니까?", qVi:"Giữa anh chị em là mấy 'chon'?",
+  options:["2촌","1촌","3촌","4촌"], optionsVi:["2 chon","1 chon","3 chon","4 chon"], answer:0,
+  exp:"형제자매 사이는 2촌입니다.", expVi:"Giữa anh chị em là 2 chon."},
+ {type:"mc", q:"내가 결혼해서 아이를 낳으면, 나의 남동생과 내 아이의 관계는 몇 촌입니까?", qVi:"Nếu mình kết hôn và có con, quan hệ giữa em trai mình và con mình là mấy 'chon'?",
+  options:["3촌","1촌","2촌","4촌"], optionsVi:["3 chon","1 chon","2 chon","4 chon"], answer:0,
+  exp:"삼촌(이모/고모)과 조카의 관계는 3촌입니다.", expVi:"Quan hệ chú/dì và cháu là 3 chon."},
+ {type:"mc", q:"남편이나 아내의 형제자매에게서 태어난 아이들끼리의 관계는 무엇입니까?", qVi:"Quan hệ giữa con cái của anh chị em ruột của vợ hoặc chồng là gì?",
+  options:["사촌","삼촌","이모","고모"], optionsVi:["Anh em họ (4 chon)","Chú/cậu","Dì","Cô"], answer:0,
+  exp:"형제자매의 자녀들끼리는 사촌 관계이며 4촌입니다.", expVi:"Con cái của anh chị em là quan hệ anh em họ, 4 chon."}
+]},
+{title:"13회 · 민주정치", items:[
+ {type:"mc", q:"국민이 나라의 주인이 되어 국민을 위한 정치가 이루어지는 제도를 무엇이라고 합니까?", qVi:"Chế độ mà người dân trở thành chủ nhân đất nước và chính trị được thực hiện vì dân gọi là gì?",
+  options:["민주주의","군주제","독재정치","식민정치"], optionsVi:["Chế độ dân chủ","Chế độ quân chủ","Chính trị độc tài","Chính trị thuộc địa"], answer:0,
+  exp:"민주주의는 국민이 나라의 주인이 되어 국민을 위한 정치가 이루어지는 제도입니다.", expVi:"Dân chủ là chế độ mà nhân dân là chủ đất nước và chính trị vì dân."},
+ {type:"mc", q:"권력이 한곳에 집중되어 남용되는 것을 막기 위해, 국가권력을 입법부·행정부·사법부 세 곳으로 나누는 제도는 무엇입니까?", qVi:"Chế độ chia quyền lực nhà nước thành 3 nhánh lập pháp, hành pháp, tư pháp để ngăn tập trung và lạm dụng quyền lực gọi là gì?",
+  options:["삼권분립","삼국통일","삼일운동","삼심제도"], optionsVi:["Tam quyền phân lập","Thống nhất Tam Quốc","Phong trào Samil","Chế độ 3 cấp xét xử"], answer:0,
+  exp:"삼권분립은 국가권력을 입법부·행정부·사법부로 나누어 권력 집중과 남용을 막는 제도입니다.", expVi:"Tam quyền phân lập chia quyền lực thành 3 nhánh để ngăn tập trung, lạm dụng quyền lực."}
+]},
+{title:"14-1회 · 행정부 ①", items:[
+ {type:"mc", q:"대통령을 중심으로 나라의 행정(살림)을 맡아보는 국가기관은 어디입니까?", qVi:"Cơ quan nhà nước với Tổng thống làm trung tâm, phụ trách công việc hành chính của đất nước, là cơ quan nào?",
+  options:["행정부","입법부","사법부","감사원"], optionsVi:["Hành pháp","Lập pháp","Tư pháp","Viện Giám sát"], answer:0,
+  exp:"행정부는 대통령을 중심으로 나라의 행정을 맡아보는 기관입니다.", expVi:"Hành pháp là cơ quan với Tổng thống làm trung tâm, phụ trách hành chính đất nước."},
+ {type:"mc", q:"5년마다 국민이 직접 뽑으며, 다른 나라에 대해 대한민국을 대표하는 행정부의 최고 책임자는 누구입니까?", qVi:"Người được dân bầu trực tiếp 5 năm một lần, đại diện Hàn Quốc trước các nước khác, là ai?",
+  options:["대통령","국무총리","국회의장","대법원장"], optionsVi:["Tổng thống","Thủ tướng","Chủ tịch Quốc hội","Chánh án Tòa Tối cao"], answer:0,
+  exp:"대통령은 5년마다 국민이 직접 뽑는, 행정부의 최고 책임자입니다.", expVi:"Tổng thống do dân bầu trực tiếp 5 năm một lần, là người đứng đầu hành pháp."},
+ {type:"mc", q:"대통령의 임기(5년) 중에 대통령이 사망하면 누가 대신하여 임시로 대통령 역할을 합니까?", qVi:"Nếu Tổng thống qua đời giữa nhiệm kỳ 5 năm thì ai sẽ tạm thời làm thay?",
+  options:["국무총리","국회의장","대법원장","외교부 장관"], optionsVi:["Thủ tướng","Chủ tịch Quốc hội","Chánh án Tòa Tối cao","Bộ trưởng Ngoại giao"], answer:0,
+  exp:"대통령이 임기 중 사망하면 국무총리가 임시로 대통령의 역할(권한대행)을 합니다.", expVi:"Nếu Tổng thống qua đời giữa nhiệm kỳ, Thủ tướng sẽ tạm thời làm thay."},
+ {type:"mc", q:"행정부의 2인자로서 대통령을 도와 여러 정책을 관리하는 사람은 누구입니까?", qVi:"Người đứng thứ hai trong hành pháp, giúp Tổng thống quản lý các chính sách, là ai?",
+  options:["국무총리","국회의장","대법원장","감사원장"], optionsVi:["Thủ tướng","Chủ tịch Quốc hội","Chánh án Tòa Tối cao","Viện trưởng Viện Giám sát"], answer:0,
+  exp:"국무총리는 행정부의 2인자로 대통령을 도와 정책을 관리합니다.", expVi:"Thủ tướng là người thứ hai trong hành pháp, giúp Tổng thống quản lý chính sách."},
+ {type:"mc", q:"국민의 건강, 의료, 사회복지에 관한 일을 담당하는 정부 부처는 어디입니까?", qVi:"Bộ phụ trách sức khỏe, y tế, phúc lợi xã hội của dân là bộ nào?",
+  options:["보건복지부","교육부","외교부","국방부"], optionsVi:["Bộ Y tế và Phúc lợi","Bộ Giáo dục","Bộ Ngoại giao","Bộ Quốc phòng"], answer:0,
+  exp:"보건복지부는 국민의 건강과 복지를 담당하는 부처입니다.", expVi:"Bộ Y tế và Phúc lợi phụ trách sức khỏe, phúc lợi của dân."},
+ {type:"mc", q:"국민의 취업과 일자리 환경을 좋게 만들기 위해 노력하는 정부 부처는 어디입니까?", qVi:"Bộ nào nỗ lực cải thiện việc làm và môi trường lao động cho người dân?",
+  options:["고용노동부","교육부","법무부","통일부"], optionsVi:["Bộ Lao động và Việc làm","Bộ Giáo dục","Bộ Tư pháp","Bộ Thống nhất"], answer:0,
+  exp:"고용노동부는 취업과 일자리 환경을 담당하는 부처입니다.", expVi:"Bộ Lao động và Việc làm phụ trách việc làm, môi trường lao động."},
+ {type:"mc", q:"학교 교육과 평생 교육에 관한 일을 담당하는 정부 부처는 어디입니까?", qVi:"Bộ phụ trách giáo dục học đường và giáo dục trọn đời là bộ nào?",
+  options:["교육부","외교부","법무부","국방부"], optionsVi:["Bộ Giáo dục","Bộ Ngoại giao","Bộ Tư pháp","Bộ Quốc phòng"], answer:0,
+  exp:"교육부는 학교 교육과 평생 교육을 담당하는 부처입니다.", expVi:"Bộ Giáo dục phụ trách giáo dục học đường và giáo dục trọn đời."}
+]},
+{title:"14-2회 · 행정부 ②", items:[
+ {type:"mc", q:"다른 나라와의 외교 관계를 담당하는 정부 부처는 어디입니까?", qVi:"Bộ phụ trách quan hệ ngoại giao với nước khác là bộ nào?",
+  options:["외교부","교육부","법무부","국방부"], optionsVi:["Bộ Ngoại giao","Bộ Giáo dục","Bộ Tư pháp","Bộ Quốc phòng"], answer:0,
+  exp:"외교부는 다른 나라와의 관계를 담당하는 부처입니다.", expVi:"Bộ Ngoại giao phụ trách quan hệ với nước khác."},
+ {type:"mc", q:"검찰, 인권 보호, 출입국 관리 등을 담당하는 정부 부처는 어디입니까?", qVi:"Bộ phụ trách công tố, bảo vệ nhân quyền, quản lý xuất nhập cảnh là bộ nào?",
+  options:["법무부","외교부","국방부","통일부"], optionsVi:["Bộ Tư pháp","Bộ Ngoại giao","Bộ Quốc phòng","Bộ Thống nhất"], answer:0,
+  exp:"법무부는 검찰, 인권보호, 출입국관리 등을 담당하는 부처입니다.", expVi:"Bộ Tư pháp phụ trách công tố, bảo vệ nhân quyền, quản lý xuất nhập cảnh."},
+ {type:"mc", q:"나라의 국방과 안보에 관한 일을 담당하는 정부 부처는 어디입니까?", qVi:"Bộ phụ trách quốc phòng, an ninh của đất nước là bộ nào?",
+  options:["국방부","외교부","통일부","법무부"], optionsVi:["Bộ Quốc phòng","Bộ Ngoại giao","Bộ Thống nhất","Bộ Tư pháp"], answer:0,
+  exp:"국방부는 국방과 안보를 담당하는 부처입니다.", expVi:"Bộ Quốc phòng phụ trách quốc phòng, an ninh."},
+ {type:"mc", q:"전염병 예방과 검사, 연구 등을 담당하는 기관은 어디입니까?", qVi:"Cơ quan phụ trách phòng dịch, xét nghiệm, nghiên cứu bệnh truyền nhiễm là cơ quan nào?",
+  options:["질병관리청","보건복지부","교육부","경찰청"], optionsVi:["Cục Kiểm soát Phòng ngừa Dịch bệnh","Bộ Y tế Phúc lợi","Bộ Giáo dục","Cơ quan Cảnh sát"], answer:0,
+  exp:"질병관리청은 전염병 예방·검사·연구 등을 담당하는 기관입니다.", expVi:"Cục Kiểm soát Phòng ngừa Dịch bệnh phụ trách phòng dịch, xét nghiệm, nghiên cứu."},
+ {type:"mc", q:"북한과의 대화와 교류, 통일 관련 업무를 담당하는 정부 부처는 어디입니까?", qVi:"Bộ phụ trách đối thoại, giao lưu với Bắc Triều Tiên và công việc thống nhất là bộ nào?",
+  options:["통일부","외교부","국방부","법무부"], optionsVi:["Bộ Thống nhất","Bộ Ngoại giao","Bộ Quốc phòng","Bộ Tư pháp"], answer:0,
+  exp:"통일부는 북한과의 대화·교류와 통일 관련 업무를 담당합니다.", expVi:"Bộ Thống nhất phụ trách đối thoại, giao lưu với Bắc Triều Tiên và thống nhất."},
+ {type:"mc", q:"국가의 병역(징집, 소집) 업무를 담당하는 기관은 어디입니까?", qVi:"Cơ quan phụ trách nghĩa vụ quân sự (triệu tập, nhập ngũ) là cơ quan nào?",
+  options:["병무청","교육청","경찰청","소방청"], optionsVi:["Cục Binh vụ","Sở Giáo dục","Cơ quan Cảnh sát","Cục Cứu hỏa"], answer:0,
+  exp:"병무청은 징집·소집 등 국가의 병역 업무를 담당합니다.", expVi:"Cục Binh vụ phụ trách triệu tập, nhập ngũ và nghĩa vụ quân sự."},
+ {type:"mc", q:"국가와 단체의 회계를 검사하고 공무원의 직무를 감찰하는 기관은 어디입니까?", qVi:"Cơ quan kiểm tra kế toán nhà nước, tổ chức và giám sát nhiệm vụ công chức là cơ quan nào?",
+  options:["감사원","교육청","병무청","질병관리청"], optionsVi:["Viện Giám sát","Sở Giáo dục","Cục Binh vụ","Cục Kiểm soát Dịch bệnh"], answer:0,
+  exp:"감사원은 회계검사와 공무원 직무감찰을 하는 국가기관입니다.", expVi:"Viện Giám sát kiểm tra kế toán và giám sát nhiệm vụ công chức."}
+]},
+{title:"15회 · 입법부(국회)", items:[
+ {type:"mc", q:"법을 만들거나 고치는 국가기관은 어디입니까?", qVi:"Cơ quan nhà nước làm ra hoặc sửa luật là cơ quan nào?",
+  options:["입법부(국회)","사법부","행정부","감사원"], optionsVi:["Lập pháp (Quốc hội)","Tư pháp","Hành pháp","Viện Giám sát"], answer:0,
+  exp:"입법부(국회)는 법을 만들거나 고치는 기관입니다.", expVi:"Lập pháp (Quốc hội) là cơ quan làm hoặc sửa luật."},
+ {type:"mc", q:"국민이 선거로 직접 뽑은 대표들로 이루어져 법률을 만드는 국가기관은 어디입니까?", qVi:"Cơ quan nhà nước gồm các đại biểu do dân bầu trực tiếp qua bầu cử, tạo ra luật, là cơ quan nào?",
+  options:["국회","법원","경찰서","시청"], optionsVi:["Quốc hội","Tòa án","Đồn cảnh sát","Tòa thị chính"], answer:0,
+  exp:"국회는 국민이 직접 뽑은 대표들로 이루어진, 법률을 만드는 기관입니다.", expVi:"Quốc hội gồm các đại biểu do dân bầu trực tiếp, làm ra luật."},
+ {type:"mc", q:"국회의원은 몇 년마다, 어떤 방식으로 뽑힙니까?", qVi:"Đại biểu Quốc hội được bầu mấy năm một lần, theo cách nào?",
+  options:["4년마다 국민의 직접 투표로","5년마다 대통령이 임명해서","6년마다 정당이 정해서","2년마다 시장이 뽑아서"],
+  optionsVi:["4 năm/lần, dân bầu trực tiếp","5 năm/lần, Tổng thống bổ nhiệm","6 năm/lần, đảng chỉ định","2 năm/lần, thị trưởng chọn"], answer:0,
+  exp:"국회의원은 4년마다 국민의 보통·평등·직접·비밀 선거로 선출됩니다.", expVi:"Đại biểu Quốc hội được bầu 4 năm một lần bằng bầu cử phổ thông, bình đẳng, trực tiếp, bí mật."}
+]},
+{title:"16회 · 사법부", items:[
+ {type:"mc", q:"법에 따라 재판하고 판결을 내려 사회 질서를 유지하는 국가기관은 어디입니까?", qVi:"Cơ quan nhà nước xét xử theo luật và đưa ra phán quyết để duy trì trật tự xã hội là cơ quan nào?",
+  options:["사법부","입법부","행정부","감사원"], optionsVi:["Tư pháp","Lập pháp","Hành pháp","Viện Giám sát"], answer:0,
+  exp:"사법부는 법에 따라 재판하여 사회 질서를 유지하는 기관입니다.", expVi:"Tư pháp là cơ quan xét xử theo luật để duy trì trật tự xã hội."},
+ {type:"mc", q:"사람들 사이에 다툼이 있거나 법을 어긴 경우, 법에 따라 재판을 하는 곳은 어디입니까?", qVi:"Nơi xét xử theo luật khi có tranh chấp hoặc vi phạm luật là ở đâu?",
+  options:["법원","경찰서","주민센터","우체국"], optionsVi:["Tòa án","Đồn cảnh sát","Trung tâm cộng đồng","Bưu điện"], answer:0,
+  exp:"법원은 다툼이나 법 위반이 있을 때 법에 따라 재판하는 곳입니다.", expVi:"Tòa án là nơi xét xử theo luật khi có tranh chấp hoặc vi phạm."},
+ {type:"mc", q:"법원에서 재판을 진행하고 판결을 내리는 사람은 누구입니까?", qVi:"Người tiến hành xét xử và đưa ra phán quyết tại tòa án là ai?",
+  options:["판사","변호사","검사","경찰관"], optionsVi:["Thẩm phán","Luật sư","Công tố viên","Cảnh sát"], answer:0,
+  exp:"판사는 법원에서 재판을 진행하고 판결을 내리는 사람입니다.", expVi:"Thẩm phán là người tiến hành xét xử và đưa ra phán quyết tại tòa án."},
+ {type:"mc", q:"개인이나 단체를 대신해서 소송을 하거나 재판에서 변호해 주는 사람은 누구입니까?", qVi:"Người đứng ra thay cá nhân hoặc tổ chức để kiện tụng hoặc biện hộ tại tòa là ai?",
+  options:["변호사","판사","국회의원","시장"], optionsVi:["Luật sư","Thẩm phán","Đại biểu Quốc hội","Thị trưởng"], answer:0,
+  exp:"변호사는 개인이나 단체를 대신해 소송하거나 변호하는 사람입니다.", expVi:"Luật sư là người thay cá nhân, tổ chức kiện tụng hoặc biện hộ."},
+ {type:"mc", q:"법률이나 정책이 헌법에 맞는지 살펴보고 판단하는 국가기관은 어디입니까?", qVi:"Cơ quan xem xét và phán quyết luật hoặc chính sách có phù hợp Hiến pháp không là cơ quan nào?",
+  options:["헌법재판소","대법원","국회","감사원"], optionsVi:["Tòa án Hiến pháp","Tòa Tối cao","Quốc hội","Viện Giám sát"], answer:0,
+  exp:"헌법재판소는 법률이 헌법에 맞는지 살펴보는 기관입니다.", expVi:"Tòa án Hiến pháp xem xét luật có phù hợp Hiến pháp không."},
+ {type:"mc", q:"공정한 재판을 위해 한 사건을 최대 세 번까지 재판받을 수 있게 하는 제도는 무엇입니까?", qVi:"Chế độ cho phép một vụ án được xét xử tối đa 3 lần để đảm bảo công bằng là gì?",
+  options:["삼심 제도","일심 제도","재심 제도","항소 제도"], optionsVi:["Chế độ 3 cấp xét xử","Chế độ 1 cấp","Chế độ tái thẩm","Chế độ kháng cáo"], answer:0,
+  exp:"삼심 제도는 한 사건을 최대 3번까지 재판받을 수 있는 제도입니다.", expVi:"Chế độ 3 cấp xét xử cho phép một vụ án xét xử tối đa 3 lần."}
+]},
+{title:"17회 · 국민의 기본권", items:[
+ {type:"mc", q:"대한민국 헌법이 보장하는 국민의 기본권 5가지는 무엇입니까?", qVi:"5 quyền cơ bản của công dân được Hiến pháp Đại Hàn bảo đảm là gì?",
+  options:["자유권, 평등권, 사회권, 참정권, 청구권","자유권, 평등권, 재산권, 참정권, 근로권","사회권, 청구권, 환경권, 행복추구권, 자유권","평등권, 참정권, 청구권, 근로권, 단결권"],
+  optionsVi:["Tự do, Bình đẳng, Xã hội, Tham chính, Yêu cầu","Tự do, Bình đẳng, Tài sản, Tham chính, Lao động","Xã hội, Yêu cầu, Môi trường, Mưu cầu hạnh phúc, Tự do","Bình đẳng, Tham chính, Yêu cầu, Lao động, Đoàn kết"], answer:0,
+  exp:"5가지 기본권은 자유권, 평등권, 사회권, 참정권, 청구권입니다.", expVi:"5 quyền cơ bản là Tự do, Bình đẳng, Xã hội, Tham chính, Yêu cầu."},
+ {type:"mc", q:"언론, 종교, 신체, 주거 이전의 자유처럼 국가로부터 함부로 제한받지 않을 권리는 무엇입니까?", qVi:"Quyền không bị nhà nước hạn chế tùy tiện, như tự do ngôn luận, tôn giáo, thân thể, nơi cư trú, là quyền gì?",
+  options:["자유권","평등권","사회권","청구권"], optionsVi:["Quyền tự do","Quyền bình đẳng","Quyền xã hội","Quyền yêu cầu"], answer:0,
+  exp:"자유권은 국가 권력으로부터 개인의 자유를 함부로 제한받지 않을 권리입니다.", expVi:"Quyền tự do là quyền không bị nhà nước hạn chế tự do cá nhân tùy tiện."},
+ {type:"mc", q:"성별, 종교, 신분, 인종 등으로 부당하게 차별받지 않을 권리는 무엇입니까?", qVi:"Quyền không bị phân biệt đối xử bất công vì giới tính, tôn giáo, địa vị, chủng tộc là quyền gì?",
+  options:["평등권","자유권","사회권","참정권"], optionsVi:["Quyền bình đẳng","Quyền tự do","Quyền xã hội","Quyền tham chính"], answer:0,
+  exp:"평등권은 부당하게 차별받지 않을 권리입니다.", expVi:"Quyền bình đẳng là quyền không bị phân biệt đối xử bất công."},
+ {type:"mc", q:"인간다운 생활에 필요한 최소한의 수준을 보장받을 권리는 무엇입니까?", qVi:"Quyền được đảm bảo mức sống tối thiểu cần thiết cho cuộc sống con người là quyền gì?",
+  options:["사회권","자유권","평등권","참정권"], optionsVi:["Quyền xã hội","Quyền tự do","Quyền bình đẳng","Quyền tham chính"], answer:0,
+  exp:"사회권은 인간다운 생활에 필요한 최소 수준을 보장받을 권리입니다.", expVi:"Quyền xã hội là quyền được đảm bảo mức sống tối thiểu."},
+ {type:"mc", q:"국가에 대해 일정한 요구를 할 수 있는 권리는 무엇입니까?", qVi:"Quyền đưa ra yêu cầu nhất định đối với nhà nước là quyền gì?",
+  options:["청구권","자유권","평등권","사회권"], optionsVi:["Quyền yêu cầu","Quyền tự do","Quyền bình đẳng","Quyền xã hội"], answer:0,
+  exp:"청구권은 국가에 일정한 요구를 할 수 있는 권리입니다.", expVi:"Quyền yêu cầu là quyền đưa ra yêu cầu nhất định đối với nhà nước."},
+ {type:"mc", q:"국민이 직접 또는 간접적으로 정치에 참여할 수 있는 권리는 무엇입니까?", qVi:"Quyền cho phép người dân tham gia trực tiếp hoặc gián tiếp vào chính trị là quyền gì?",
+  options:["참정권","자유권","사회권","청구권"], optionsVi:["Quyền tham chính","Quyền tự do","Quyền xã hội","Quyền yêu cầu"], answer:0,
+  exp:"참정권은 국민이 정치에 참여할 수 있는 권리입니다.", expVi:"Quyền tham chính cho phép người dân tham gia chính trị."}
+]},
+{title:"18회 · 국민의 4대 의무", items:[
+ {type:"mc", q:"다음 중 국민의 4대 의무가 아닌 것은 무엇입니까?", qVi:"Đâu KHÔNG phải là 1 trong 4 nghĩa vụ cơ bản của công dân?",
+  options:["참정 의무","교육의 의무","근로의 의무","국방의 의무"], optionsVi:["Nghĩa vụ tham chính (không tồn tại)","Nghĩa vụ giáo dục","Nghĩa vụ lao động","Nghĩa vụ quốc phòng"], answer:0,
+  exp:"국민의 4대 의무는 교육, 근로, 납세, 국방의 의무입니다.", expVi:"4 nghĩa vụ cơ bản là giáo dục, lao động, nộp thuế, quốc phòng."},
+ {type:"mc", q:"부모(학부모)는 자녀가 최소 몇 살부터 학교에 보내 의무교육을 받게 해야 합니까?", qVi:"Cha mẹ phải cho con đi học nghĩa vụ giáo dục từ mấy tuổi trở lên?",
+  options:["만 6세","만 3세","만 10세","만 15세"], optionsVi:["Đủ 6 tuổi","Đủ 3 tuổi","Đủ 10 tuổi","Đủ 15 tuổi"], answer:0,
+  exp:"학부모는 만 6세 이상의 자녀를 학교에 보내 의무교육을 받게 해야 합니다.", expVi:"Cha mẹ phải cho con từ 6 tuổi trở lên đi học nghĩa vụ giáo dục."},
+ {type:"mc", q:"의무교육은 최소 어디까지 받아야 합니까?", qVi:"Nghĩa vụ giáo dục phải học ít nhất đến cấp nào?",
+  options:["중학교까지","초등학교까지","고등학교까지","대학교까지"], optionsVi:["Đến hết trung học cơ sở","Đến hết tiểu học","Đến hết trung học phổ thông","Đến hết đại học"], answer:0,
+  exp:"대한민국 국민은 최소한 중학교까지 의무교육을 받아야 합니다.", expVi:"Công dân Hàn Quốc phải học nghĩa vụ giáo dục ít nhất đến hết trung học cơ sở."},
+ {type:"mc", q:"개인의 행복과 국가의 발전을 위해 자신이 맡은 일을 열심히 해야 하는 의무는 무엇입니까?", qVi:"Nghĩa vụ làm việc chăm chỉ vì hạnh phúc cá nhân và sự phát triển đất nước là gì?",
+  options:["근로의 의무","교육의 의무","납세의 의무","국방의 의무"], optionsVi:["Nghĩa vụ lao động","Nghĩa vụ giáo dục","Nghĩa vụ nộp thuế","Nghĩa vụ quốc phòng"], answer:0,
+  exp:"근로의 의무는 자신이 맡은 일을 열심히 해야 하는 의무입니다.", expVi:"Nghĩa vụ lao động là làm việc chăm chỉ với công việc mình đảm nhận."},
+ {type:"mc", q:"일해서 번 돈으로 나라에 세금을 내야 하는 의무는 무엇입니까?", qVi:"Nghĩa vụ đóng thuế cho nhà nước bằng tiền kiếm được từ lao động là gì?",
+  options:["납세의 의무","근로의 의무","교육의 의무","국방의 의무"], optionsVi:["Nghĩa vụ nộp thuế","Nghĩa vụ lao động","Nghĩa vụ giáo dục","Nghĩa vụ quốc phòng"], answer:0,
+  exp:"납세의 의무는 세금을 내는 국민의 의무입니다.", expVi:"Nghĩa vụ nộp thuế là nghĩa vụ đóng thuế của công dân."},
+ {type:"mc", q:"국민으로서 나라를 지켜야 하는 의무는 무엇입니까?", qVi:"Nghĩa vụ bảo vệ đất nước với tư cách công dân là gì?",
+  options:["국방의 의무","교육의 의무","근로의 의무","납세의 의무"], optionsVi:["Nghĩa vụ quốc phòng","Nghĩa vụ giáo dục","Nghĩa vụ lao động","Nghĩa vụ nộp thuế"], answer:0,
+  exp:"국방의 의무는 나라를 지키는 국민의 의무입니다.", expVi:"Nghĩa vụ quốc phòng là nghĩa vụ bảo vệ đất nước."}
+]},
+{title:"19회 · 선거", items:[
+ {type:"mc", q:"국민이 자신을 대표할 사람을 직접 뽑는 것을 무엇이라고 합니까?", qVi:"Việc dân trực tiếp chọn người đại diện cho mình gọi là gì?",
+  options:["선거","재판","신고","소송"], optionsVi:["Bầu cử","Xét xử","Khai báo","Kiện tụng"], answer:0,
+  exp:"선거는 국민이 자신을 대표할 사람을 직접 뽑는 것입니다.", expVi:"Bầu cử là việc dân trực tiếp chọn người đại diện cho mình."},
+ {type:"mc", q:"선거를 통해 국민이 직접 뽑는 사람이 아닌 것은 누구입니까?", qVi:"Ai KHÔNG phải là người được dân bầu trực tiếp qua bầu cử?",
+  options:["법원의 판사","대통령","국회의원","지방의회 의원"], optionsVi:["Thẩm phán tòa án","Tổng thống","Đại biểu Quốc hội","Đại biểu hội đồng địa phương"], answer:0,
+  exp:"대통령, 국회의원, 지방의회 의원은 선거로 뽑지만, 판사는 시험과 임명으로 되는 것이지 선거로 뽑지 않습니다.", expVi:"Tổng thống, đại biểu Quốc hội được bầu cử, nhưng thẩm phán được bổ nhiệm, không qua bầu cử."}
+]},
+{title:"20회 · 선거의 4대 원칙", items:[
+ {type:"mc", q:"만 18세 이상 국민이면 성별·재산·학력 등에 관계없이 누구나 투표할 수 있는 원칙은 무엇입니까?", qVi:"Nguyên tắc mà công dân đủ 18 tuổi ai cũng có thể bầu cử, không phân biệt giới tính, tài sản, học vấn, là gì?",
+  options:["보통선거","평등선거","직접선거","비밀선거"], optionsVi:["Phổ thông đầu phiếu","Bình đẳng đầu phiếu","Trực tiếp đầu phiếu","Bí mật đầu phiếu"], answer:0,
+  exp:"보통선거는 만 18세 이상 국민이면 누구나 투표할 수 있는 원칙입니다.", expVi:"Phổ thông đầu phiếu là nguyên tắc công dân đủ 18 tuổi ai cũng được bầu cử."},
+ {type:"mc", q:"조건에 관계없이 누구나 한 사람이 똑같이 공평하게 한 표씩만 투표하는 원칙은 무엇입니까?", qVi:"Nguyên tắc mỗi người một phiếu công bằng như nhau, không phân biệt điều kiện, là gì?",
+  options:["평등선거","보통선거","직접선거","비밀선거"], optionsVi:["Bình đẳng đầu phiếu","Phổ thông đầu phiếu","Trực tiếp đầu phiếu","Bí mật đầu phiếu"], answer:0,
+  exp:"평등선거는 누구나 한 표씩만 공평하게 투표할 수 있는 원칙입니다.", expVi:"Bình đẳng đầu phiếu là nguyên tắc mỗi người một phiếu công bằng."},
+ {type:"mc", q:"유권자가 다른 사람을 거치지 않고 직접 투표하여 대표를 뽑는 원칙은 무엇입니까?", qVi:"Nguyên tắc cử tri tự mình bỏ phiếu không qua người khác để chọn đại diện là gì?",
+  options:["직접선거","보통선거","평등선거","비밀선거"], optionsVi:["Trực tiếp đầu phiếu","Phổ thông đầu phiếu","Bình đẳng đầu phiếu","Bí mật đầu phiếu"], answer:0,
+  exp:"직접선거는 유권자 본인이 직접 투표하는 원칙입니다.", expVi:"Trực tiếp đầu phiếu là nguyên tắc cử tri tự mình bỏ phiếu."},
+ {type:"mc", q:"투표한 사람이 누구에게 투표했는지 다른 사람이 알지 못하게 하는 원칙은 무엇입니까?", qVi:"Nguyên tắc không ai biết mình bầu cho ai là gì?",
+  options:["비밀선거","직접선거","보통선거","평등선거"], optionsVi:["Bí mật đầu phiếu","Trực tiếp đầu phiếu","Phổ thông đầu phiếu","Bình đẳng đầu phiếu"], answer:0,
+  exp:"비밀선거는 누구에게 투표했는지 비밀로 하는 원칙입니다.", expVi:"Bí mật đầu phiếu là giữ bí mật ai đã bầu cho ai."},
+ {type:"mc", q:"여러 사람의 의견이 다를 때, 더 많은 사람이 찬성하는 쪽으로 결정하는 원칙은 무엇입니까?", qVi:"Nguyên tắc quyết định theo bên có nhiều người tán thành hơn khi có nhiều ý kiến khác nhau là gì?",
+  options:["다수결의 원칙","소수결의 원칙","만장일치","추첨"], optionsVi:["Nguyên tắc đa số","Nguyên tắc thiểu số","Nhất trí tuyệt đối","Bốc thăm"], answer:0,
+  exp:"다수결의 원칙은 더 많은 사람이 찬성하는 쪽으로 정하는 원칙입니다. 선거에서 당선자를 결정할 때도 이 원칙이 쓰입니다.", expVi:"Nguyên tắc đa số là quyết định theo bên có nhiều người ủng hộ hơn, cũng dùng để xác định người đắc cử."}
+]},
+{title:"21회 · 정당", items:[
+ {type:"mc", q:"정치적 생각이나 주장이 비슷한 사람들이 모여 만든 단체를 무엇이라고 합니까?", qVi:"Tổ chức của những người có cùng ý kiến, quan điểm chính trị gọi là gì?",
+  options:["정당","시민단체","노동조합","이익집단"], optionsVi:["Đảng phái","Tổ chức xã hội dân sự","Công đoàn","Nhóm lợi ích"], answer:0,
+  exp:"정당은 정치적 의견이나 주장이 같은 사람들이 모여 만든 단체입니다.", expVi:"Đảng phái là tổ chức của những người có cùng ý kiến, quan điểm chính trị."},
+ {type:"mc", q:"대통령을 배출하여 정권을 잡고 있는 정당을 무엇이라고 합니까?", qVi:"Đảng có Tổng thống và đang nắm quyền gọi là gì?",
+  options:["여당","야당","무소속","연립정당"], optionsVi:["Đảng cầm quyền","Đảng đối lập","Không đảng phái","Đảng liên minh"], answer:0,
+  exp:"여당은 대통령을 배출하여 정권을 잡고 있는 정당입니다.", expVi:"Đảng cầm quyền là đảng có Tổng thống và đang nắm quyền."},
+ {type:"mc", q:"여당이 아닌 나머지 정당을 무엇이라고 합니까?", qVi:"Các đảng còn lại không phải đảng cầm quyền gọi là gì?",
+  options:["야당","여당","무소속","연립정당"], optionsVi:["Đảng đối lập","Đảng cầm quyền","Không đảng phái","Đảng liên minh"], answer:0,
+  exp:"야당은 여당이 아닌 나머지 정당입니다.", expVi:"Đảng đối lập là các đảng còn lại không phải đảng cầm quyền."}
+]},
+{title:"22회 · 주변 국가", items:[
+ {type:"mc", q:"한국과 밀접한 관계이며 유교·한자·불교 등 문화 교류가 많았고 현재 주요 교역국인 나라는 어디입니까?", qVi:"Nước có quan hệ chặt chẽ với Hàn Quốc, giao lưu văn hóa Nho giáo, chữ Hán, Phật giáo, hiện là đối tác thương mại chính, là nước nào?",
+  options:["중국","미국","일본","러시아"], optionsVi:["Trung Quốc","Mỹ","Nhật Bản","Nga"], answer:0,
+  exp:"중국은 한국과 문화적으로 밀접하고 현재 주요 교역국입니다.", expVi:"Trung Quốc gắn bó văn hóa với Hàn Quốc và hiện là đối tác thương mại chính."},
+ {type:"mc", q:"한국의 우방국으로서 군사·경제·정치적으로 밀접한 관계를 맺고 있는 나라는 어디입니까?", qVi:"Nước đồng minh của Hàn Quốc, có quan hệ thân thiết về quân sự, kinh tế, chính trị, là nước nào?",
+  options:["미국","중국","일본","러시아"], optionsVi:["Mỹ","Trung Quốc","Nhật Bản","Nga"], answer:0,
+  exp:"미국은 한국의 우방국으로 군사·경제·정치적으로 밀접한 나라입니다.", expVi:"Mỹ là đồng minh của Hàn Quốc, thân thiết về quân sự, kinh tế, chính trị."},
+ {type:"mc", q:"한국과 지리적으로 가깝지만 독도 문제로 분쟁이 있는 나라는 어디입니까?", qVi:"Nước gần Hàn Quốc về địa lý nhưng có tranh chấp về vấn đề Dokdo là nước nào?",
+  options:["일본","중국","미국","러시아"], optionsVi:["Nhật Bản","Trung Quốc","Mỹ","Nga"], answer:0,
+  exp:"일본은 한국과 가깝지만 독도 문제로 분쟁이 있는 나라입니다.", expVi:"Nhật Bản gần Hàn Quốc nhưng có tranh chấp về vấn đề Dokdo."},
+ {type:"mc", q:"6.25전쟁 때 북한을 지원했지만 지금은 에너지·기술 등에서 한국과 협력하는 나라는 어디입니까?", qVi:"Nước từng hỗ trợ Bắc Triều Tiên trong chiến tranh 6.25 nhưng nay hợp tác với Hàn Quốc về năng lượng, công nghệ, là nước nào?",
+  options:["러시아","일본","미국","중국"], optionsVi:["Nga","Nhật Bản","Mỹ","Trung Quốc"], answer:0,
+  exp:"러시아는 6.25전쟁 때 북한을 지원했지만 지금은 한국과 에너지·기술 분야에서 협력합니다.", expVi:"Nga từng hỗ trợ Bắc Triều Tiên nhưng nay hợp tác với Hàn Quốc về năng lượng, công nghệ."}
+]},
+{title:"23회 · 법의 종류", items:[
+ {type:"mc", q:"국가의 조직과 국민의 권리·의무를 정한, 가장 높은 법은 무엇입니까?", qVi:"Luật cao nhất quy định tổ chức nhà nước và quyền, nghĩa vụ của công dân là gì?",
+  options:["헌법","형법","민법","상법"], optionsVi:["Hiến pháp","Luật hình sự","Luật dân sự","Luật thương mại"], answer:0,
+  exp:"헌법은 국가 조직과 국민의 권리·의무를 정한 가장 높은 법입니다.", expVi:"Hiến pháp là luật cao nhất quy định tổ chức nhà nước và quyền, nghĩa vụ công dân."},
+ {type:"mc", q:"범죄의 종류와 형벌의 정도를 정해 놓은 법은 무엇입니까?", qVi:"Luật quy định các loại tội phạm và mức độ hình phạt là gì?",
+  options:["형법","민법","헌법","상법"], optionsVi:["Luật hình sự","Luật dân sự","Hiến pháp","Luật thương mại"], answer:0,
+  exp:"형법은 범죄의 종류와 형벌을 정한 법입니다.", expVi:"Luật hình sự quy định các loại tội phạm và hình phạt."},
+ {type:"mc", q:"결혼, 이혼, 상속, 재산 등 개인들의 생활관계를 정한 법은 무엇입니까?", qVi:"Luật quy định quan hệ đời sống cá nhân như hôn nhân, ly hôn, thừa kế, tài sản là gì?",
+  options:["민법","형법","헌법","상법"], optionsVi:["Luật dân sự","Luật hình sự","Hiến pháp","Luật thương mại"], answer:0,
+  exp:"민법은 결혼·이혼·상속·재산 등 개인 생활관계를 정한 법입니다.", expVi:"Luật dân sự quy định quan hệ đời sống cá nhân như hôn nhân, ly hôn, thừa kế, tài sản."}
+]},
+{title:"24회 · 소송과 재판", items:[
+ {type:"mc", q:"분쟁이 잘 해결되지 않을 때 법원의 재판을 통해 해결하는 대표적인 방법은 무엇입니까?", qVi:"Cách tiêu biểu để giải quyết tranh chấp qua phán quyết của tòa án khi không giải quyết được là gì?",
+  options:["소송","신고","선거","협상"], optionsVi:["Kiện tụng","Khai báo","Bầu cử","Đàm phán"], answer:0,
+  exp:"소송은 분쟁을 법원의 재판으로 해결하는 대표적인 방법입니다.", expVi:"Kiện tụng là cách tiêu biểu giải quyết tranh chấp qua phán quyết tòa án."},
+ {type:"mc", q:"개인 간에 발생하는 문제(예: 층간소음 갈등)를 민법에 따라 해결하는 재판은 무엇입니까?", qVi:"Phiên tòa giải quyết vấn đề giữa cá nhân (ví dụ: mâu thuẫn tiếng ồn giữa các tầng) theo luật dân sự là gì?",
+  options:["민사재판","형사재판","가사재판","행정재판"], optionsVi:["Xét xử dân sự","Xét xử hình sự","Xét xử gia đình","Xét xử hành chính"], answer:0,
+  exp:"민사재판은 층간소음 같은 개인 간의 문제를 민법에 따라 해결하는 재판입니다.", expVi:"Xét xử dân sự giải quyết vấn đề cá nhân như tiếng ồn giữa các tầng, theo luật dân sự."},
+ {type:"mc", q:"강도, 살인, 절도 같은 범죄자를 형법에 따라 처벌하기 위한 재판은 무엇입니까?", qVi:"Phiên tòa xử phạt tội phạm như cướp, giết người, trộm cắp theo luật hình sự là gì?",
+  options:["형사재판","민사재판","가사재판","행정재판"], optionsVi:["Xét xử hình sự","Xét xử dân sự","Xét xử gia đình","Xét xử hành chính"], answer:0,
+  exp:"형사재판은 강도·살인·절도 등 범죄자를 처벌하기 위한 재판입니다.", expVi:"Xét xử hình sự xử phạt tội phạm như cướp, giết người, trộm cắp."},
+ {type:"mc", q:"결혼, 이혼, 상속, 자녀 양육 등 가족 문제와 관련된 재판은 무엇입니까?", qVi:"Phiên tòa liên quan đến vấn đề gia đình như hôn nhân, ly hôn, thừa kế, nuôi con là gì?",
+  options:["가사재판","민사재판","형사재판","행정재판"], optionsVi:["Xét xử gia đình","Xét xử dân sự","Xét xử hình sự","Xét xử hành chính"], answer:0,
+  exp:"가사재판은 결혼·이혼·상속·양육 등 가족 문제를 다루는 재판입니다.", expVi:"Xét xử gia đình xử lý vấn đề hôn nhân, ly hôn, thừa kế, nuôi con."}
+]},
+{title:"25회 · 나에 대해 말하기", items:[
+ {type:"info", text:"이름이 무엇입니까?", textVi:"Tên của anh/chị là gì?",
+  sub:"자기 이름을 또박또박 말하는 연습을 해 보세요.", subVi:"Hãy luyện nói rõ ràng tên của mình."},
+ {type:"info", text:"한국에 온 지 몇 년 됐습니까?", textVi:"Anh/Chị sống ở Hàn được mấy năm rồi?",
+  sub:"실제 자신의 상황에 맞게 자연스럽게 말해 보세요.", subVi:"Hãy nói theo tình hình thực tế của bản thân."},
+ {type:"info", text:"가족이 몇 명입니까?", textVi:"Gia đình anh/chị có mấy người?",
+  sub:"가족 구성원을 짧게 소개해 보세요.", subVi:"Hãy giới thiệu ngắn gọn thành viên gia đình."},
+ {type:"info", text:"직업이 무엇입니까?", textVi:"Nghề nghiệp của anh/chị là gì?",
+  sub:"현재 하고 있는 일을 짧게 말해 보세요.", subVi:"Hãy nói ngắn gọn công việc hiện tại của mình."},
+ {type:"info", text:"취미가 무엇입니까?", textVi:"Sở thích của anh/chị là gì?",
+  sub:"좋아하는 활동을 자연스럽게 말해 보세요.", subVi:"Hãy nói tự nhiên về hoạt động mình thích."},
+ {type:"info", text:"한국 생활 중 가장 좋은 점은 무엇입니까?", textVi:"Điều tốt nhất khi sống ở Hàn Quốc là gì?",
+  sub:"자신의 경험을 바탕으로 짧게 말해 보세요.", subVi:"Hãy nói ngắn gọn dựa trên trải nghiệm của bản thân."},
+ {type:"info", text:"앞으로의 꿈이나 계획이 있습니까?", textVi:"Anh/Chị có ước mơ hay kế hoạch nào cho tương lai không?",
+  sub:"자신의 생각을 편하게 말해 보세요.", subVi:"Hãy nói suy nghĩ của mình một cách thoải mái."}
+]}
 ];
 
 let currentRoundIdx = 0;
@@ -580,7 +520,8 @@ function renderRoundTabs(){
   const wrap = document.getElementById('roundTabs');
   let html = "";
   rounds.forEach((r, i)=>{
-    html += `<div class="round-tab ${i===currentRoundIdx?'active':''}" data-i="${i}">${i+1}회</div>`;
+    const label = r.title.split(' · ')[0];
+    html += `<div class="round-tab ${i===currentRoundIdx?'active':''}" data-i="${i}">${label}</div>`;
   });
   wrap.innerHTML = html;
   wrap.querySelectorAll('.round-tab').forEach(el=>{
@@ -610,14 +551,13 @@ function renderStage(){
   if(current >= roundData.items.length){
     renderProgress();
     let msg = "정말 잘하셨어요! / Làm rất tốt!";
+    let scoreLine = "완료 / Hoàn thành";
     if(quizCount > 0){
       const ratio = score / quizCount;
       if(ratio < 0.5) msg = "조금 더 복습하면 훨씬 좋아질 거예요. / Ôn tập thêm sẽ tốt hơn nhiều.";
-      else if(ratio < 0.8) msg = "잘하고 있어요! 조금만 더 연습해요. / Khá tốt! Hãy luyện tập thêm chút nữa.";
-    } else {
-      msg = "수고했어요! 실제 면접처럼 말하는 연습을 해 보세요. / Làm tốt lắm! Hãy luyện nói như phỏng vấn thật.";
+      else if(ratio < 0.8) msg = "잘하고 있어요! 조금만 더 연습해요. / Khá tốt! Hãy luyện thêm chút nữa.";
+      scoreLine = `${score} / ${quizCount}`;
     }
-    let scoreLine = quizCount > 0 ? `${score} / ${quizCount}` : "완료 / Hoàn thành";
     stage.innerHTML = `
       <div class="result-card">
         <div style="font-size:15px;font-weight:700;">${roundData.title} 결과</div>
