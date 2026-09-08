@@ -2,328 +2,719 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>귀화시험 준비 퀴즈 (쉬운 버전) / Đề luyện thi nhập tịch (Dễ)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>귀화시험 연습 (쉬운 버전, 10회)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #fbf8f2;
-    --card: #ffffff;
-    --accent: #2f7d4f;
-    --accent-light: #e6f5ec;
-    --correct: #2e7d32;
-    --wrong: #c62828;
-    --text: #222;
-    --muted: #666;
-    --border: #e5e0d5;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    padding: 24px 16px;
-    display: flex;
-    justify-content: center;
-  }
-  .wrap { width: 100%; max-width: 640px; }
-  h1 { font-size: 20px; margin: 0 0 4px; color: var(--accent); }
-  .sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
-  .toolbar {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 16px; gap: 8px; flex-wrap: wrap;
-  }
-  .toggle-btn {
-    background: var(--card); border: 1px solid var(--accent); color: var(--accent);
-    padding: 8px 14px; border-radius: 20px; font-size: 13px; cursor: pointer; font-weight: 600;
-  }
-  .toggle-btn.active { background: var(--accent); color: #fff; }
-  .progress { font-size: 13px; color: var(--muted); }
-  .card {
-    background: var(--card); border-radius: 14px; padding: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06); margin-bottom: 16px; border: 1px solid var(--border);
-  }
-  .qnum { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
-  .qtext-ko { font-size: 17px; font-weight: 700; margin-bottom: 4px; line-height: 1.6; }
-  .qtext-vi { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 14px; line-height: 1.4; }
-  .options { display: flex; flex-direction: column; gap: 8px; }
-  .option {
-    text-align: left; padding: 12px; border-radius: 10px; border: 1px solid var(--border);
-    background: #fafafa; cursor: pointer; font-size: 15px; line-height: 1.4;
-  }
-  .option:hover { background: var(--accent-light); }
-  .option.selected { border-color: var(--accent); background: var(--accent-light); }
-  .option.correct { border-color: var(--correct); background: #e8f5e9; color: var(--correct); font-weight: 700; }
-  .option.wrong { border-color: var(--wrong); background: #fdecea; color: var(--wrong); font-weight: 700; }
-  .opt-vi { display: block; font-size: 12px; color: var(--muted); font-style: italic; margin-top: 2px; }
-  .explain {
-    margin-top: 12px; font-size: 13px; background: var(--accent-light);
-    padding: 10px 12px; border-radius: 10px; color: #245c39; display: none;
-  }
-  .explain.show { display: block; }
-  .nav-btns { display: flex; justify-content: space-between; margin-top: 20px; }
-  button.nav {
-    background: var(--accent); color: #fff; border: none; padding: 10px 18px;
-    border-radius: 20px; font-size: 14px; cursor: pointer; font-weight: 600;
-  }
-  button.nav:disabled { background: #ccc; cursor: not-allowed; }
-  .result { text-align: center; padding: 30px 20px; }
-  .result h2 { color: var(--accent); font-size: 22px; }
-  .score { font-size: 40px; font-weight: 800; color: var(--accent); margin: 10px 0; }
-  .restart {
-    margin-top: 16px; background: var(--accent); color: #fff; border: none;
-    padding: 10px 22px; border-radius: 20px; font-size: 14px; cursor: pointer;
-  }
-  .hidden { display: none; }
-  .star { font-size: 20px; }
+:root{
+  --main:#2f7d4f;
+  --main-dark:#1e5c38;
+  --bg:#fbf8f2;
+  --card-bg:#ffffff;
+  --border:#e5e0d5;
+  --ink:#222;
+  --correct:#2e7d32;
+  --correct-bg:#e8f5e9;
+  --correct-border:#a5d6a7;
+  --wrong:#c62828;
+  --wrong-bg:#fdecea;
+  --wrong-border:#ef9a9a;
+  --muted:#777;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg);
+  font-family:'Gothic A1',sans-serif;
+  color:var(--ink);
+  padding-bottom:40px;
+}
+.header{
+  background:linear-gradient(135deg,var(--main-dark),var(--main));
+  color:#fff;
+  padding:16px 0 12px;
+  border-radius:0 0 22px 22px;
+  text-align:center;
+}
+.header h1{
+  font-size:16px;
+  margin:0 18px 4px;
+  font-weight:800;
+}
+.header .sub{
+  font-size:12px;
+  margin:0 18px 12px;
+  opacity:.9;
+}
+.round-tabs{
+  display:flex;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  gap:6px;
+  padding:0 12px;
+}
+.round-tabs::-webkit-scrollbar{display:none;}
+.round-tab{
+  flex:0 0 auto;
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  padding:8px 14px;
+  background:rgba(255,255,255,.16);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+  font-size:13.5px;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.round-tab.active{
+  background:#fff;
+  color:var(--main-dark);
+  border-color:#fff;
+}
+.vi-toggle-wrap{
+  padding:12px 18px 0;
+  display:flex;
+  justify-content:flex-end;
+}
+.vi-toggle{
+  background:var(--card-bg);
+  border:1px solid var(--main);
+  color:var(--main);
+  padding:6px 12px;
+  border-radius:16px;
+  font-size:12.5px;
+  font-weight:700;
+  cursor:pointer;
+}
+.vi-toggle.active{
+  background:var(--main);
+  color:#fff;
+}
+.progress-wrap{
+  padding:10px 18px 0;
+}
+.progress-bar-bg{
+  background:var(--border);
+  height:8px;
+  border-radius:999px;
+  overflow:hidden;
+}
+.progress-bar-fill{
+  background:var(--main);
+  height:100%;
+  border-radius:999px;
+  transition:width .3s;
+}
+.progress-label{
+  text-align:right;
+  font-size:12px;
+  color:var(--muted);
+  font-weight:700;
+  margin-top:4px;
+}
+.stage{
+  padding:16px 18px 30px;
+}
+.card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px 16px;
+  margin-bottom:16px;
+}
+.q-number{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:26px;height:26px;
+  background:var(--main);
+  color:#fff;
+  border-radius:50%;
+  font-size:13px;
+  font-weight:800;
+  margin-right:8px;
+}
+.q-text{
+  font-size:16.5px;
+  font-weight:700;
+  line-height:1.6;
+  margin:10px 0 4px;
+}
+.q-vi{
+  font-size:12.5px;
+  font-weight:400;
+  color:var(--muted);
+  font-style:italic;
+  line-height:1.5;
+  margin-bottom:16px;
+}
+.options{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.option{
+  min-height:46px;
+  display:flex;
+  flex-direction:column;
+  padding:12px 14px;
+  background:#fafafa;
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.15s;
+}
+.opt-vi{
+  display:block;
+  font-size:11.5px;
+  font-weight:400;
+  color:var(--muted);
+  font-style:italic;
+  margin-top:2px;
+}
+.option .icon{margin-right:6px;font-weight:800;}
+.option:active{transform:scale(0.99);}
+.option.correct{
+  background:var(--correct-bg);
+  border-color:var(--correct-border);
+  color:var(--correct);
+}
+.option.wrong{
+  background:var(--wrong-bg);
+  border-color:var(--wrong-border);
+  color:var(--wrong);
+}
+.option.disabled-look{
+  opacity:.55;
+}
+.explanation{
+  margin-top:14px;
+  padding:12px 14px;
+  background:var(--bg);
+  border-radius:12px;
+  font-size:13.5px;
+  line-height:1.6;
+  display:none;
+}
+.explanation.show{display:block;}
+.explanation .label{
+  font-weight:800;
+  color:var(--main-dark);
+  margin-bottom:4px;
+  display:block;
+}
+.exp-vi{
+  display:block;
+  margin-top:6px;
+  font-size:12.5px;
+  color:var(--muted);
+  font-style:italic;
+  font-weight:400;
+}
+.info-card{
+  background:#fff;
+  border:1.5px dashed var(--border);
+  border-radius:16px;
+  padding:18px 16px;
+  margin-bottom:16px;
+  text-align:center;
+}
+.info-card .tag{
+  display:inline-block;
+  background:var(--main);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:999px;
+  margin-bottom:10px;
+}
+.info-card p{
+  font-size:16px;
+  font-weight:700;
+  margin:8px 0 2px;
+  line-height:1.5;
+}
+.info-card .info-vi{
+  font-size:12.5px;
+  color:var(--muted);
+  font-style:italic;
+  margin-bottom:10px;
+}
+.info-card .sub{
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.next-btn{
+  width:100%;
+  padding:13px;
+  border:none;
+  border-radius:14px;
+  background:var(--main);
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+  cursor:pointer;
+}
+.next-btn:disabled{
+  background:#ccc;
+  cursor:not-allowed;
+}
+.result-card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:30px 20px;
+  text-align:center;
+}
+.result-score{
+  font-size:38px;
+  font-weight:800;
+  color:var(--main);
+  margin:10px 0;
+}
+.result-msg{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:16px;
+  line-height:1.5;
+}
+.retry-btn{
+  padding:11px 22px;
+  border:none;
+  border-radius:16px;
+  background:var(--main);
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>⭐ 귀화시험 준비 퀴즈 (쉬운 버전)</h1>
-  <div class="sub">Đề luyện thi nhập tịch Hàn Quốc (Phiên bản dễ)</div>
 
-  <div class="toolbar">
-    <button class="toggle-btn active" id="viToggle">🇻🇳 베트남어 번역 켜짐</button>
-    <div class="progress" id="progress">1 / 10</div>
-  </div>
-
-  <div id="quizArea"></div>
-  <div id="resultArea" class="hidden result">
-    <h2>결과 / Kết quả</h2>
-    <div class="score" id="scoreText">0 / 10</div>
-    <div id="scoreMsg"></div>
-    <button class="restart" id="restartBtn">다시 풀기 / Làm lại</button>
-  </div>
+<div class="header">
+  <h1>⭐ 귀화시험 연습 (쉬운 버전)</h1>
+  <div class="sub">Luyện thi nhập tịch - Phiên bản dễ (10 회)</div>
+  <div class="round-tabs" id="roundTabs"></div>
 </div>
 
-<script>
-const questions = [
-  {
-    ko: "한국의 수도는 어디예요?",
-    vi: "Thủ đô của Hàn Quốc là gì?",
-    options: [
-      { ko: "부산", vi: "Busan" },
-      { ko: "서울", vi: "Seoul" },
-      { ko: "제주도", vi: "Đảo Jeju" },
-      { ko: "대구", vi: "Daegu" }
-    ],
-    answer: 1,
-    explain: "한국의 수도는 서울이에요."
-  },
-  {
-    ko: "한국의 국기 이름은 무엇이에요?",
-    vi: "Tên lá cờ Hàn Quốc là gì?",
-    options: [
-      { ko: "태극기", vi: "Taegukgi" },
-      { ko: "무궁화", vi: "Hoa mugunghwa" },
-      { ko: "애국가", vi: "Quốc ca" },
-      { ko: "한복", vi: "Hanbok" }
-    ],
-    answer: 0,
-    explain: "한국 국기의 이름은 '태극기'예요."
-  },
-  {
-    ko: "위급한 상황일 때, 경찰에 신고하는 전화번호는 몇 번이에요?",
-    vi: "Khi có việc khẩn cấp, số điện thoại báo cảnh sát là số nào?",
-    options: [
-      { ko: "119", vi: "119" },
-      { ko: "112", vi: "112" },
-      { ko: "114", vi: "114" },
-      { ko: "120", vi: "120" }
-    ],
-    answer: 1,
-    explain: "경찰 신고 번호는 112예요. 불이 나거나 아플 때는 119예요."
-  },
-  {
-    ko: "한국에서 대통령을 뽑는 선거는 몇 년마다 해요?",
-    vi: "Ở Hàn Quốc, bao nhiêu năm bầu cử Tổng thống một lần?",
-    options: [
-      { ko: "2년", vi: "2 năm" },
-      { ko: "4년", vi: "4 năm" },
-      { ko: "5년", vi: "5 năm" },
-      { ko: "10년", vi: "10 năm" }
-    ],
-    answer: 2,
-    explain: "한국 대통령의 임기는 5년이에요."
-  },
-  {
-    ko: "한글을 만든 사람은 누구예요?",
-    vi: "Ai là người đã tạo ra chữ Hangeul?",
-    options: [
-      { ko: "이순신 장군", vi: "Tướng quân Yi Sun-sin" },
-      { ko: "세종대왕", vi: "Vua Sejong Đại vương" },
-      { ko: "김구 선생님", vi: "Thầy Kim Gu" },
-      { ko: "유관순 열사", vi: "Liệt sĩ Yu Gwan-sun" }
-    ],
-    answer: 1,
-    explain: "세종대왕이 한글을 만들었어요."
-  },
-  {
-    ko: "한국의 명절이 아닌 것은 무엇이에요?",
-    vi: "Ngày nào KHÔNG phải là ngày lễ truyền thống của Hàn Quốc?",
-    options: [
-      { ko: "설날", vi: "Tết Nguyên đán" },
-      { ko: "추석", vi: "Tết Trung thu (Chuseok)" },
-      { ko: "크리스마스", vi: "Giáng sinh" },
-      { ko: "할로윈", vi: "Halloween" }
-    ],
-    answer: 3,
-    explain: "할로윈은 서양 기념일이고, 한국 전통 명절이 아니에요."
-  },
-  {
-    ko: "외국인이 한국에 90일보다 더 오래 살고 싶으면 무엇을 만들어야 해요?",
-    vi: "Nếu người nước ngoài muốn sống ở Hàn Quốc hơn 90 ngày, phải làm gì?",
-    options: [
-      { ko: "외국인등록증을 만들어요", vi: "Làm thẻ đăng ký người nước ngoài" },
-      { ko: "운전면허를 만들어요", vi: "Làm bằng lái xe" },
-      { ko: "여권을 새로 만들어요", vi: "Làm hộ chiếu mới" },
-      { ko: "은행 카드를 만들어요", vi: "Làm thẻ ngân hàng" }
-    ],
-    answer: 0,
-    explain: "90일보다 오래 살면 외국인등록증을 만들어야 해요."
-  },
-  {
-    ko: "한국의 화폐(돈) 단위는 무엇이에요?",
-    vi: "Đơn vị tiền tệ của Hàn Quốc là gì?",
-    options: [
-      { ko: "원", vi: "Won" },
-      { ko: "엔", vi: "Yên" },
-      { ko: "위안", vi: "Nhân dân tệ" },
-      { ko: "동", vi: "Đồng" }
-    ],
-    answer: 0,
-    explain: "한국 돈의 단위는 '원'이에요."
-  },
-  {
-    ko: "학교에 다니지 않는 어린이를 위해 나라가 지켜주는 것은 무엇이에요?",
-    vi: "Điều gì mà nhà nước bảo vệ cho trẻ em chưa đi học?",
-    options: [
-      { ko: "교육받을 권리", vi: "Quyền được giáo dục" },
-      { ko: "운전할 권리", vi: "Quyền lái xe" },
-      { ko: "투표할 권리", vi: "Quyền bầu cử" },
-      { ko: "여행할 권리", vi: "Quyền đi du lịch" }
-    ],
-    answer: 0,
-    explain: "모든 어린이는 교육받을 권리가 있어요."
-  },
-  {
-    ko: "한국에서 8월 15일은 무슨 날이에요?",
-    vi: "Ngày 15 tháng 8 ở Hàn Quốc là ngày gì?",
-    options: [
-      { ko: "광복절 (독립을 기념하는 날)", vi: "Ngày Giải phóng" },
-      { ko: "어린이날", vi: "Ngày Thiếu nhi" },
-      { ko: "설날", vi: "Tết Nguyên đán" },
-      { ko: "한글날", vi: "Ngày Hangeul" }
-    ],
-    answer: 0,
-    explain: "8월 15일은 광복절이에요. 일본으로부터 독립한 날을 기념해요."
-  }
-];
+<div class="vi-toggle-wrap">
+  <button class="vi-toggle active" id="viToggle">🇻🇳 번역 켜짐</button>
+</div>
 
-let current = 0;
-let score = 0;
-let answered = new Array(questions.length).fill(false);
+<div class="progress-wrap" id="progressWrap">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">0 / 0</div>
+</div>
+
+<div class="stage" id="stage"></div>
+
+<script>
 let showVi = true;
 
-const quizArea = document.getElementById('quizArea');
-const resultArea = document.getElementById('resultArea');
-const progress = document.getElementById('progress');
-const viToggle = document.getElementById('viToggle');
+const rounds = [
+{
+  title: "1회 · 우리나라 상징",
+  items: [
+    {type:"mc", q:"한국의 국기 이름은 무엇입니까?", qVi:"Tên lá cờ Hàn Quốc là gì?",
+     options:["태극기","무궁화","애국가","한복"], optionsVi:["Taegukgi","Hoa mugunghwa","Quốc ca","Hanbok"], answer:0,
+     exp:"한국의 국기 이름은 태극기입니다.", expVi:"Tên lá cờ Hàn Quốc là Taegukgi."},
+    {type:"mc", q:"한국의 나라꽃(국화)은 무엇입니까?", qVi:"Quốc hoa của Hàn Quốc là gì?",
+     options:["장미","무궁화","벚꽃","해바라기"], optionsVi:["Hoa hồng","Hoa mugunghwa","Hoa anh đào","Hoa hướng dương"], answer:1,
+     exp:"한국의 나라꽃은 무궁화입니다.", expVi:"Quốc hoa của Hàn Quốc là hoa mugunghwa."},
+    {type:"mc", q:"한국의 수도는 어디입니까?", qVi:"Thủ đô của Hàn Quốc là gì?",
+     options:["부산","서울","대구","인천"], optionsVi:["Busan","Seoul","Daegu","Incheon"], answer:1,
+     exp:"한국의 수도는 서울입니다.", expVi:"Thủ đô của Hàn Quốc là Seoul."},
+    {type:"mc", q:"한국의 정식 나라 이름은 무엇입니까?", qVi:"Tên nước chính thức của Hàn Quốc là gì?",
+     options:["대한민국","한국공화국","고려국","조선"], optionsVi:["Đại Hàn Dân Quốc","Cộng hòa Hàn Quốc","Nước Goryeo","Joseon"], answer:0,
+     exp:"한국의 정식 이름은 '대한민국'입니다.", expVi:"Tên chính thức của Hàn Quốc là 'Đại Hàn Dân Quốc'."},
+    {type:"mc", q:"한국의 돈(화폐) 단위는 무엇입니까?", qVi:"Đơn vị tiền Hàn Quốc là gì?",
+     options:["원","엔","위안","동"], optionsVi:["Won","Yên","Nhân dân tệ","Đồng"], answer:0,
+     exp:"한국 돈의 단위는 '원'입니다.", expVi:"Đơn vị tiền Hàn Quốc là 'Won'."},
+    {type:"mc", q:"한국의 대통령 임기는 몇 년입니까?", qVi:"Nhiệm kỳ Tổng thống Hàn Quốc là mấy năm?",
+     options:["4년","5년","6년","7년"], optionsVi:["4 năm","5 năm","6 năm","7 năm"], answer:1,
+     exp:"대통령의 임기는 5년입니다.", expVi:"Nhiệm kỳ Tổng thống là 5 năm."},
+    {type:"info", text:"이름이 무엇입니까?", textVi:"Tên của anh/chị là gì?",
+     sub:"정해진 답이 없는 질문이에요. 자기 이름을 자신 있게 말하는 연습을 해 보세요.",
+     subVi:"Câu hỏi không có đáp án cố định. Hãy luyện nói tên mình thật tự tin."}
+  ]
+},
+{
+  title: "2회 · 나라와 정부",
+  items: [
+    {type:"mc", q:"국회의원의 임기는 몇 년입니까?", qVi:"Nhiệm kỳ đại biểu Quốc hội là mấy năm?",
+     options:["2년","4년","5년","6년"], optionsVi:["2 năm","4 năm","5 năm","6 năm"], answer:1,
+     exp:"국회의원의 임기는 4년입니다.", expVi:"Nhiệm kỳ đại biểu Quốc hội là 4 năm."},
+    {type:"mc", q:"법을 만드는 곳은 어디입니까?", qVi:"Nơi làm ra luật là ở đâu?",
+     options:["국회","경찰서","은행","우체국"], optionsVi:["Quốc hội","Đồn cảnh sát","Ngân hàng","Bưu điện"], answer:0,
+     exp:"국회는 법을 만드는 곳입니다.", expVi:"Quốc hội là nơi làm ra luật."},
+    {type:"mc", q:"결혼한 것을 나라에 알리는 것을 무엇이라고 합니까?", qVi:"Việc báo cho nhà nước biết đã kết hôn gọi là gì?",
+     options:["출생신고","혼인신고","전입신고","이혼신고"], optionsVi:["Khai báo sinh","Khai báo kết hôn","Khai báo chuyển hộ khẩu","Khai báo ly hôn"], answer:1,
+     exp:"혼인신고는 결혼한 것을 관공서에 알리는 것입니다.", expVi:"Khai báo kết hôn là báo việc kết hôn cho cơ quan nhà nước."},
+    {type:"mc", q:"아기가 태어나면 한 달 안에 무엇을 해야 합니까?", qVi:"Khi em bé sinh ra, trong 1 tháng phải làm gì?",
+     options:["출생신고","혼인신고","전입신고","사망신고"], optionsVi:["Khai báo sinh","Khai báo kết hôn","Khai báo chuyển hộ khẩu","Khai báo tử vong"], answer:0,
+     exp:"아기가 태어나면 1개월 안에 출생신고를 해야 합니다.", expVi:"Khi trẻ sinh ra phải khai báo sinh trong 1 tháng."},
+    {type:"mc", q:"지방선거는 몇 년마다 합니까?", qVi:"Bầu cử địa phương bao nhiêu năm một lần?",
+     options:["2년","4년","5년","10년"], optionsVi:["2 năm","4 năm","5 năm","10 năm"], answer:1,
+     exp:"지방선거는 4년마다 실시합니다.", expVi:"Bầu cử địa phương tổ chức 4 năm một lần."},
+    {type:"mc", q:"외국인이 90일보다 오래 한국에 살려면 무엇을 만들어야 합니까?", qVi:"Người nước ngoài sống ở Hàn hơn 90 ngày phải làm gì?",
+     options:["외국인등록증","운전면허증","여권","은행 카드"], optionsVi:["Thẻ đăng ký người nước ngoài","Bằng lái xe","Hộ chiếu","Thẻ ngân hàng"], answer:0,
+     exp:"90일보다 오래 살면 외국인등록증을 만들어야 합니다.", expVi:"Nếu ở hơn 90 ngày phải làm thẻ đăng ký người nước ngoài."},
+    {type:"info", text:"가족이 몇 명입니까?", textVi:"Gia đình anh/chị có mấy người?",
+     sub:"정해진 답이 없어요. 자신의 가족 수를 자연스럽게 말해 보세요.",
+     subVi:"Không có đáp án cố định. Hãy nói số người trong gia đình mình một cách tự nhiên."}
+  ]
+},
+{
+  title: "3회 · 안전과 긴급전화",
+  items: [
+    {type:"mc", q:"경찰에 신고할 때 전화번호는 몇 번입니까?", qVi:"Số điện thoại báo cảnh sát là số nào?",
+     options:["119","112","114","120"], optionsVi:["119","112","114","120"], answer:1,
+     exp:"경찰 신고 번호는 112입니다.", expVi:"Số báo cảnh sát là 112."},
+    {type:"mc", q:"불이 나거나 아플 때 전화하는 번호는 몇 번입니까?", qVi:"Khi có cháy hoặc bị bệnh, gọi số nào?",
+     options:["112","119","114","110"], optionsVi:["112","119","114","110"], answer:1,
+     exp:"불이 나거나 아프면 119에 전화합니다.", expVi:"Khi có cháy hoặc bị bệnh thì gọi 119."},
+    {type:"mc", q:"쓰레기를 버릴 때 어떻게 해야 합니까?", qVi:"Khi vứt rác phải làm thế nào?",
+     options:["분리해서 정해진 곳에 버립니다","아무 곳에나 버립니다","태워 버립니다","땅에 묻습니다"],
+     optionsVi:["Phân loại rồi vứt đúng nơi quy định","Vứt ở đâu cũng được","Đốt đi","Chôn xuống đất"], answer:0,
+     exp:"쓰레기는 분리해서 정해진 곳에 버려야 합니다.", expVi:"Rác phải được phân loại rồi vứt đúng nơi quy định."},
+    {type:"mc", q:"쓰레기를 버릴 때 사용하는, 양에 따라 돈을 내는 봉투는 무엇입니까?", qVi:"Túi tính tiền theo khối lượng rác dùng khi vứt rác gọi là gì?",
+     options:["종량제봉투","재활용봉투","비닐봉투","선물봉투"], optionsVi:["Túi tính phí theo khối lượng","Túi tái chế","Túi ni lông","Túi quà"], answer:0,
+     exp:"종량제봉투는 쓰레기 양만큼 돈을 내는 봉투입니다.", expVi:"Túi tính phí theo khối lượng là túi trả tiền theo lượng rác."},
+    {type:"mc", q:"길에서 갑자기 아픈 사람을 보면 어떻게 해야 합니까?", qVi:"Nếu thấy người đột nhiên bị bệnh trên đường, phải làm gì?",
+     options:["119에 전화합니다","그냥 지나갑니다","사진을 찍습니다","혼자 병원에 데려갑니다"],
+     optionsVi:["Gọi điện 119","Đi qua luôn","Chụp ảnh","Tự đưa đến bệnh viện một mình"], answer:0,
+     exp:"위급할 때는 119에 전화해서 도움을 요청해야 합니다.", expVi:"Khi khẩn cấp phải gọi 119 để nhờ giúp đỡ."},
+    {type:"info", text:"책상 위에 있는 문장을 크게 읽어 보세요.", textVi:"Hãy đọc to đoạn văn trên bàn.",
+     sub:"면접에서 짧은 문장을 소리 내어 읽는 연습을 자주 하는 것이 좋아요.",
+     subVi:"Trong phỏng vấn nên luyện đọc to các câu văn ngắn thường xuyên."}
+  ]
+},
+{
+  title: "4회 · 전통 문화",
+  items: [
+    {type:"mc", q:"한글을 만든 사람은 누구입니까?", qVi:"Ai là người tạo ra chữ Hangeul?",
+     options:["이순신 장군","세종대왕","김구 선생님","유관순 열사"], optionsVi:["Tướng Yi Sun-sin","Vua Sejong Đại vương","Thầy Kim Gu","Liệt sĩ Yu Gwan-sun"], answer:1,
+     exp:"세종대왕이 한글을 만들었습니다.", expVi:"Vua Sejong Đại vương đã tạo ra chữ Hangeul."},
+    {type:"mc", q:"한국의 큰 명절이 아닌 것은 무엇입니까?", qVi:"Ngày nào KHÔNG phải là lễ lớn của Hàn Quốc?",
+     options:["설날","추석","할로윈","정월대보름"], optionsVi:["Tết Nguyên đán","Chuseok","Halloween","Rằm tháng Giêng"], answer:2,
+     exp:"할로윈은 서양 기념일이고 한국 전통 명절이 아닙니다.", expVi:"Halloween là ngày lễ phương Tây, không phải lễ truyền thống Hàn Quốc."},
+    {type:"mc", q:"설날에 어른들께 하는 인사는 무엇입니까?", qVi:"Vào Tết, con cháu làm gì để chào người lớn?",
+     options:["세배","제사","차례","성묘"], optionsVi:["Lạy chào năm mới (Sebae)","Cúng giỗ","Cúng Tết","Tảo mộ"], answer:0,
+     exp:"설날에는 어른들께 세배를 하고 세뱃돈을 받습니다.", expVi:"Vào Tết, con cháu lạy chào (Sebae) người lớn và nhận tiền mừng tuổi."},
+    {type:"mc", q:"한국의 전통 옷은 무엇입니까?", qVi:"Trang phục truyền thống Hàn Quốc là gì?",
+     options:["한복","기모노","아오자이","치파오"], optionsVi:["Hanbok","Kimono","Áo dài","Sườn xám"], answer:0,
+     exp:"한국의 전통 옷은 한복입니다.", expVi:"Trang phục truyền thống Hàn Quốc là Hanbok."},
+    {type:"mc", q:"4개의 나무 막대를 던져서 노는 한국 전통 놀이는 무엇입니까?", qVi:"Trò chơi truyền thống nào ném 4 cây gậy gỗ?",
+     options:["윷놀이","공기놀이","제기차기","팽이치기"], optionsVi:["Trò chơi Yut","Gonggi","Đá cầu","Đánh quay"], answer:0,
+     exp:"윷놀이는 4개의 윷가락을 던져서 노는 전통 놀이입니다.", expVi:"Yutnori là trò chơi truyền thống ném 4 cây gậy Yut."},
+    {type:"mc", q:"추석에 먹는 대표적인 떡은 무엇입니까?", qVi:"Bánh đặc trưng ăn vào Chuseok là gì?",
+     options:["송편","떡볶이","인절미","시루떡"], optionsVi:["Bánh Songpyeon","Tteokbokki","Injeolmi","Bánh hấp Sirutteok"], answer:0,
+     exp:"추석에는 송편이라는 떡을 만들어 먹습니다.", expVi:"Vào Chuseok người ta làm và ăn bánh Songpyeon."},
+    {type:"info", text:"한국에 온 지 몇 년 됐습니까?", textVi:"Anh/Chị sống ở Hàn được mấy năm rồi?",
+     sub:"정해진 답이 없어요. 실제 자신의 상황에 맞게 말해 보세요. (예: 3년 됐습니다.)",
+     subVi:"Không có đáp án cố định. Hãy nói theo tình hình thực tế của bản thân."}
+  ]
+},
+{
+  title: "5회 · 우리나라 자연",
+  items: [
+    {type:"mc", q:"한국에서 가장 높은 산은 무엇입니까?", qVi:"Núi cao nhất Hàn Quốc là núi nào?",
+     options:["백두산","지리산","한라산","설악산"], optionsVi:["Núi Baekdu","Núi Jiri","Núi Halla","Núi Seorak"], answer:2,
+     exp:"한라산은 제주도에 있는, 한국에서 가장 높은 산입니다.", expVi:"Núi Halla ở đảo Jeju là ngọn núi cao nhất Hàn Quốc."},
+    {type:"mc", q:"한국의 동쪽 바다 이름은 무엇입니까?", qVi:"Tên biển phía đông Hàn Quốc là gì?",
+     options:["서해","남해","동해","발해"], optionsVi:["Hoàng Hải","Biển Nam","Biển Đông (Donghae)","Balhae"], answer:2,
+     exp:"한국의 동쪽 바다는 동해입니다.", expVi:"Biển phía đông Hàn Quốc là Donghae."},
+    {type:"mc", q:"우리나라의 가장 동쪽에 있는 섬은 어디입니까?", qVi:"Đảo cực đông của Hàn Quốc là đảo nào?",
+     options:["울릉도","제주도","마라도","독도"], optionsVi:["Đảo Ulleungdo","Đảo Jeju","Đảo Marado","Đảo Dokdo"], answer:3,
+     exp:"독도는 대한민국의 가장 동쪽에 있는 섬입니다.", expVi:"Dokdo là đảo cực đông của Hàn Quốc."},
+    {type:"mc", q:"덥고 비가 많이 오는 계절은 언제입니까?", qVi:"Mùa nào nóng và mưa nhiều?",
+     options:["봄","여름","가을","겨울"], optionsVi:["Mùa xuân","Mùa hè","Mùa thu","Mùa đông"], answer:1,
+     exp:"여름은 덥고 비가 많이 오는 계절입니다.", expVi:"Mùa hè nóng và mưa nhiều."},
+    {type:"mc", q:"꽃이 피고 날씨가 따뜻해지는 계절은 언제입니까?", qVi:"Mùa nào hoa nở và trời ấm lên?",
+     options:["봄","여름","가을","겨울"], optionsVi:["Mùa xuân","Mùa hè","Mùa thu","Mùa đông"], answer:0,
+     exp:"봄에는 날씨가 따뜻해지고 꽃이 핍니다.", expVi:"Vào mùa xuân trời ấm lên và hoa nở."},
+    {type:"mc", q:"제주도에 있는 화산섬 산은 무엇입니까?", qVi:"Núi lửa nằm trên đảo Jeju là núi nào?",
+     options:["한라산","설악산","지리산","북한산"], optionsVi:["Núi Halla","Núi Seorak","Núi Jiri","Núi Bukhan"], answer:0,
+     exp:"한라산은 제주도에 있는 화산으로 만들어진 산입니다.", expVi:"Núi Halla là núi lửa nằm trên đảo Jeju."},
+    {type:"info", text:"고향이 어디입니까?", textVi:"Quê hương của anh/chị ở đâu?",
+     sub:"정해진 답이 없어요. 자신의 고향 나라와 도시 이름을 말해 보세요.",
+     subVi:"Không có đáp án cố định. Hãy nói tên quê hương và thành phố của mình."}
+  ]
+},
+{
+  title: "6회 · 학교와 교육",
+  items: [
+    {type:"mc", q:"모든 어린이가 갖는, 학교에서 배울 수 있는 권리는 무엇입니까?", qVi:"Quyền mà mọi trẻ em đều có, được học ở trường, gọi là gì?",
+     options:["교육받을 권리","운전할 권리","투표할 권리","여행할 권리"], optionsVi:["Quyền được giáo dục","Quyền lái xe","Quyền bầu cử","Quyền đi du lịch"], answer:0,
+     exp:"모든 어린이는 교육받을 권리가 있습니다.", expVi:"Mọi trẻ em đều có quyền được giáo dục."},
+    {type:"mc", q:"한국에서 초등학교는 몇 년 동안 다닙니까?", qVi:"Ở Hàn Quốc, tiểu học học mấy năm?",
+     options:["4년","6년","3년","5년"], optionsVi:["4 năm","6 năm","3 năm","5 năm"], answer:1,
+     exp:"한국의 초등학교는 6년 과정입니다.", expVi:"Tiểu học ở Hàn Quốc là 6 năm."},
+    {type:"mc", q:"중학교는 몇 년 동안 다닙니까?", qVi:"Trung học cơ sở học mấy năm?",
+     options:["2년","3년","4년","6년"], optionsVi:["2 năm","3 năm","4 năm","6 năm"], answer:1,
+     exp:"중학교는 3년 과정입니다.", expVi:"Trung học cơ sở là 3 năm."},
+    {type:"mc", q:"다문화 가정을 도와주는 기관은 무엇입니까?", qVi:"Cơ quan hỗ trợ gia đình đa văn hóa gọi là gì?",
+     options:["다문화가족지원센터","경찰서","우체국","은행"], optionsVi:["Trung tâm hỗ trợ gia đình đa văn hóa","Đồn cảnh sát","Bưu điện","Ngân hàng"], answer:0,
+     exp:"다문화가족지원센터는 다문화 가정을 돕는 기관입니다.", expVi:"Trung tâm hỗ trợ gia đình đa văn hóa giúp đỡ gia đình đa văn hóa."},
+    {type:"mc", q:"학교에 가지 않고 집에서 아이를 가르치는 사람을 무엇이라고 부릅니까?", qVi:"Người dạy con ở nhà thay vì đến trường gọi là gì?",
+     options:["학부모","선생님","교장선생님","교감선생님"], optionsVi:["Phụ huynh","Giáo viên","Hiệu trưởng","Phó hiệu trưởng"], answer:0,
+     exp:"아이를 키우고 가르치는 부모를 학부모라고 부릅니다.", expVi:"Cha mẹ nuôi dạy con được gọi là phụ huynh."},
+    {type:"info", text:"자녀가 다니는 학교 이름이 무엇입니까?", textVi:"Tên trường con anh/chị đang học là gì?",
+     sub:"정해진 답이 없어요. 실제 상황에 맞게 자연스럽게 말해 보세요.",
+     subVi:"Không có đáp án cố định. Hãy nói theo tình hình thực tế."}
+  ]
+},
+{
+  title: "7회 · 물건 사고팔기",
+  items: [
+    {type:"mc", q:"산 물건이 마음에 안 들어서 돈을 돌려받는 것을 무엇이라고 합니까?", qVi:"Việc trả lại hàng và nhận lại tiền gọi là gì?",
+     options:["환불","적립","보증금","위약금"], optionsVi:["Hoàn tiền","Tích điểm","Tiền đặt cọc","Tiền phạt"], answer:0,
+     exp:"환불은 물건을 돌려주고 돈을 돌려받는 것입니다.", expVi:"Hoàn tiền là trả lại hàng và nhận lại tiền."},
+    {type:"mc", q:"산 물건을 다른 물건으로 바꾸는 것을 무엇이라고 합니까?", qVi:"Việc đổi sản phẩm đã mua sang cái khác gọi là gì?",
+     options:["교환","환불","적립","기부"], optionsVi:["Đổi hàng","Hoàn tiền","Tích điểm","Quyên góp"], answer:0,
+     exp:"교환은 산 물건을 다른 물건으로 바꾸는 것입니다.", expVi:"Đổi hàng là đổi sản phẩm đã mua sang cái khác."},
+    {type:"mc", q:"음식이 안전하게 먹을 수 있는 기간을 무엇이라고 합니까?", qVi:"Thời hạn có thể ăn đồ ăn an toàn gọi là gì?",
+     options:["유통기한","제조일자","가격표","영수증"], optionsVi:["Hạn sử dụng","Ngày sản xuất","Bảng giá","Hóa đơn"], answer:0,
+     exp:"유통기한은 음식을 안전하게 먹을 수 있는 기간입니다.", expVi:"Hạn sử dụng là thời hạn có thể ăn đồ ăn an toàn."},
+    {type:"mc", q:"물건을 사면 받는, 돈을 낸 것을 증명하는 종이는 무엇입니까?", qVi:"Tờ giấy chứng minh đã trả tiền khi mua hàng gọi là gì?",
+     options:["영수증","전단지","광고지","명함"], optionsVi:["Hóa đơn","Tờ rơi","Tờ quảng cáo","Danh thiếp"], answer:0,
+     exp:"영수증은 물건값을 낸 것을 증명하는 종이입니다.", expVi:"Hóa đơn là giấy chứng minh đã trả tiền mua hàng."},
+    {type:"mc", q:"물건 값을 깎아 주는 것을 무엇이라고 합니까?", qVi:"Việc giảm giá món hàng gọi là gì?",
+     options:["할인","적립","환불","교환"], optionsVi:["Giảm giá","Tích điểm","Hoàn tiền","Đổi hàng"], answer:0,
+     exp:"할인은 물건 값을 깎아 주는 것입니다.", expVi:"Giảm giá là hạ giá món hàng."},
+    {type:"info", text:"자주 가는 시장이나 마트가 어디입니까?", textVi:"Anh/Chị hay đi chợ hoặc siêu thị nào?",
+     sub:"정해진 답이 없어요. 실제로 자주 가는 곳을 자연스럽게 말해 보세요.",
+     subVi:"Không có đáp án cố định. Hãy nói nơi mình thường đi."}
+  ]
+},
+{
+  title: "8회 · 훌륭한 사람들",
+  items: [
+    {type:"mc", q:"거북선을 만들고 일본과 싸운 장군은 누구입니까?", qVi:"Vị tướng đã tạo ra thuyền rùa và chiến đấu với Nhật Bản là ai?",
+     options:["이순신 장군","계백 장군","을지문덕 장군","강감찬 장군"], optionsVi:["Tướng Yi Sun-sin","Tướng Gyebaek","Tướng Eulji Mundeok","Tướng Gang Gam-chan"], answer:0,
+     exp:"이순신 장군은 거북선을 만들어 일본과 싸워 이긴 장군입니다.", expVi:"Tướng Yi Sun-sin đã tạo ra thuyền rùa và chiến thắng Nhật Bản."},
+    {type:"mc", q:"만세운동에 참여하다가 어린 나이에 세상을 떠난 여성 독립운동가는 누구입니까?", qVi:"Nữ chiến sĩ độc lập tham gia phong trào Manse và mất khi còn trẻ là ai?",
+     options:["유관순","신사임당","허난설헌","윤봉길"], optionsVi:["Yu Gwan-sun","Shin Saimdang","Heo Nanseolheon","Yun Bong-gil"], answer:0,
+     exp:"유관순은 3.1 만세운동에 참여한 독립운동가입니다.", expVi:"Yu Gwan-sun là chiến sĩ độc lập tham gia phong trào Manse ngày 1/3."},
+    {type:"mc", q:"대한민국 임시정부를 이끈 사람은 누구입니까?", qVi:"Ai là người lãnh đạo Chính phủ lâm thời Đại Hàn Dân Quốc?",
+     options:["김구","이순신","세종대왕","반기문"], optionsVi:["Kim Gu","Yi Sun-sin","Vua Sejong","Ban Ki-moon"], answer:0,
+     exp:"김구는 대한민국 임시정부를 이끈 지도자입니다.", expVi:"Kim Gu là lãnh đạo Chính phủ lâm thời Đại Hàn Dân Quốc."},
+    {type:"mc", q:"한국인 최초로 유엔 사무총장이 된 사람은 누구입니까?", qVi:"Ai là người Hàn Quốc đầu tiên làm Tổng thư ký Liên Hợp Quốc?",
+     options:["반기문","김대중","문재인","이승만"], optionsVi:["Ban Ki-moon","Kim Dae-jung","Moon Jae-in","Lee Seung-man"], answer:0,
+     exp:"반기문은 한국인 최초의 유엔 사무총장입니다.", expVi:"Ban Ki-moon là Tổng thư ký LHQ đầu tiên người Hàn."},
+    {type:"mc", q:"한국인 최초로 노벨 평화상을 받은 사람은 누구입니까?", qVi:"Ai là người Hàn Quốc đầu tiên nhận giải Nobel Hòa bình?",
+     options:["김대중 전 대통령","이승만 전 대통령","반기문","문재인 전 대통령"], optionsVi:["Cựu TT Kim Dae-jung","Cựu TT Lee Seung-man","Ban Ki-moon","Cựu TT Moon Jae-in"], answer:0,
+     exp:"김대중 전 대통령이 한국인 최초로 노벨 평화상을 받았습니다.", expVi:"Cựu Tổng thống Kim Dae-jung là người Hàn đầu tiên nhận Nobel Hòa bình."},
+    {type:"info", text:"존경하는 사람이 있습니까?", textVi:"Anh/Chị có người mình kính trọng không?",
+     sub:"정해진 답이 없어요. 자신이 존경하는 사람과 이유를 간단히 말해 보세요.",
+     subVi:"Không có đáp án cố định. Hãy nói người mình kính trọng và lý do đơn giản."}
+  ]
+},
+{
+  title: "9회 · 우리 동네",
+  items: [
+    {type:"mc", q:"동네에서 서류를 떼거나 신고를 하는 곳은 어디입니까?", qVi:"Nơi lấy giấy tờ hoặc khai báo ở khu phố là ở đâu?",
+     options:["주민센터","은행","병원","마트"], optionsVi:["Trung tâm cộng đồng (Jumin center)","Ngân hàng","Bệnh viện","Siêu thị"], answer:0,
+     exp:"주민센터는 서류 발급이나 신고를 하는 동네 관공서입니다.", expVi:"Trung tâm cộng đồng là nơi hành chính để lấy giấy tờ hoặc khai báo."},
+    {type:"mc", q:"편지나 소포를 보내는 곳은 어디입니까?", qVi:"Nơi gửi thư hoặc bưu kiện là ở đâu?",
+     options:["우체국","경찰서","소방서","시청"], optionsVi:["Bưu điện","Đồn cảnh sát","Trạm cứu hỏa","Tòa thị chính"], answer:0,
+     exp:"우체국은 편지나 소포를 보내는 곳입니다.", expVi:"Bưu điện là nơi gửi thư hoặc bưu kiện."},
+    {type:"mc", q:"돈을 저금하거나 찾는 곳은 어디입니까?", qVi:"Nơi gửi tiền hoặc rút tiền là ở đâu?",
+     options:["은행","학교","마트","약국"], optionsVi:["Ngân hàng","Trường học","Siêu thị","Hiệu thuốc"], answer:0,
+     exp:"은행은 돈을 저금하거나 찾는 곳입니다.", expVi:"Ngân hàng là nơi gửi hoặc rút tiền."},
+    {type:"mc", q:"아플 때 약을 사는 곳은 어디입니까?", qVi:"Khi bị bệnh, mua thuốc ở đâu?",
+     options:["약국","서점","문구점","빵집"], optionsVi:["Hiệu thuốc","Hiệu sách","Cửa hàng văn phòng phẩm","Tiệm bánh"], answer:0,
+     exp:"아플 때는 약국에서 약을 살 수 있습니다.", expVi:"Khi bị bệnh có thể mua thuốc ở hiệu thuốc."},
+    {type:"mc", q:"불이 났을 때 도와주는 기관은 어디입니까?", qVi:"Khi có cháy, cơ quan nào đến giúp?",
+     options:["소방서","은행","학교","우체국"], optionsVi:["Trạm cứu hỏa","Ngân hàng","Trường học","Bưu điện"], answer:0,
+     exp:"불이 나면 소방서(119)에서 도와줍니다.", expVi:"Khi có cháy, trạm cứu hỏa (119) sẽ giúp đỡ."},
+    {type:"info", text:"우리 동네에서 자주 가는 곳이 어디입니까?", textVi:"Nơi anh/chị hay đến trong khu phố là ở đâu?",
+     sub:"정해진 답이 없어요. 실제로 자주 가는 장소를 말해 보세요.",
+     subVi:"Không có đáp án cố định. Hãy nói nơi mình thường đến."}
+  ]
+},
+{
+  title: "10회 · 나에 대해 말하기",
+  items: [
+    {type:"info", text:"이름이 무엇입니까?", textVi:"Tên của anh/chị là gì?",
+     sub:"자기 이름을 또박또박 말하는 연습을 해 보세요.",
+     subVi:"Hãy luyện nói rõ ràng tên của mình."},
+    {type:"info", text:"한국에 온 지 몇 년 됐습니까?", textVi:"Anh/Chị sống ở Hàn được mấy năm rồi?",
+     sub:"실제 자신의 상황에 맞게 자연스럽게 말해 보세요.",
+     subVi:"Hãy nói theo tình hình thực tế của bản thân."},
+    {type:"info", text:"가족이 몇 명입니까?", textVi:"Gia đình anh/chị có mấy người?",
+     sub:"가족 구성원을 짧게 소개해 보세요. (예: 남편, 저, 아이 두 명입니다.)",
+     subVi:"Hãy giới thiệu ngắn gọn thành viên gia đình."},
+    {type:"info", text:"직업이 무엇입니까?", textVi:"Nghề nghiệp của anh/chị là gì?",
+     sub:"현재 하고 있는 일을 짧게 말해 보세요.",
+     subVi:"Hãy nói ngắn gọn công việc hiện tại của mình."},
+    {type:"info", text:"취미가 무엇입니까?", textVi:"Sở thích của anh/chị là gì?",
+     sub:"좋아하는 활동을 자연스럽게 말해 보세요.",
+     subVi:"Hãy nói tự nhiên về hoạt động mình thích."},
+    {type:"info", text:"한국 생활 중 가장 좋은 점은 무엇입니까?", textVi:"Điều tốt nhất khi sống ở Hàn Quốc là gì?",
+     sub:"자신의 경험을 바탕으로 짧게 말해 보세요.",
+     subVi:"Hãy nói ngắn gọn dựa trên trải nghiệm của bản thân."},
+    {type:"info", text:"앞으로의 꿈이나 계획이 있습니까?", textVi:"Anh/Chị có ước mơ hay kế hoạch nào cho tương lai không?",
+     sub:"정해진 답이 없어요. 자신의 생각을 편하게 말해 보세요.",
+     subVi:"Không có đáp án cố định. Hãy nói suy nghĩ của mình một cách thoải mái."}
+  ]
+}
+];
 
-viToggle.addEventListener('click', () => {
-  showVi = !showVi;
-  viToggle.textContent = showVi ? "🇻🇳 베트남어 번역 켜짐" : "🇻🇳 베트남어 번역 꺼짐";
-  viToggle.classList.toggle('active', showVi);
-  render();
-});
+let currentRoundIdx = 0;
+let current = 0;
+let score = 0;
+let answered = false;
 
-document.getElementById('restartBtn').addEventListener('click', () => {
-  current = 0;
-  score = 0;
-  answered = new Array(questions.length).fill(false);
-  resultArea.classList.add('hidden');
-  quizArea.classList.remove('hidden');
-  render();
-});
-
-function render() {
-  const q = questions[current];
-  progress.textContent = `${current + 1} / ${questions.length}`;
-
-  let html = `<div class="card">
-    <div class="qnum">문제 ${current + 1}</div>
-    <div class="qtext-ko">${q.ko}</div>`;
-  if (showVi) html += `<div class="qtext-vi">${q.vi}</div>`;
-  html += `<div class="options">`;
-
-  q.options.forEach((opt, i) => {
-    let cls = "option";
-    if (answered[current] !== false) {
-      if (i === q.answer) cls += " correct";
-      else if (i === answered[current].picked) cls += " wrong";
-    }
-    html += `<div class="${cls}" data-index="${i}">
-      <span>${opt.ko}</span>
-      ${showVi ? `<span class="opt-vi">${opt.vi}</span>` : ''}
-    </div>`;
+function renderRoundTabs(){
+  const wrap = document.getElementById('roundTabs');
+  let html = "";
+  rounds.forEach((r, i)=>{
+    html += `<div class="round-tab ${i===currentRoundIdx?'active':''}" data-i="${i}">${i+1}회</div>`;
   });
-
-  html += `</div>`;
-  if (answered[current] !== false) {
-    html += `<div class="explain show">💡 ${q.explain}</div>`;
-  }
-  html += `</div>
-  <div class="nav-btns">
-    <button class="nav" id="prevBtn" ${current === 0 ? 'disabled' : ''}>이전 / Trước</button>
-    <button class="nav" id="nextBtn">${current === questions.length - 1 ? '결과보기 / Xem kết quả' : '다음 / Tiếp'}</button>
-  </div>`;
-
-  quizArea.innerHTML = html;
-
-  if (answered[current] === false) {
-    document.getElementById('nextBtn').disabled = true;
-    document.getElementById('nextBtn').style.opacity = 0.5;
-  }
-
-  quizArea.querySelectorAll('.option').forEach(el => {
-    el.addEventListener('click', () => {
-      if (answered[current] !== false) return;
-      const picked = parseInt(el.getAttribute('data-index'));
-      const correct = picked === q.answer;
-      answered[current] = { picked, correct };
-      if (correct) score++;
-      render();
+  wrap.innerHTML = html;
+  wrap.querySelectorAll('.round-tab').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      currentRoundIdx = +el.dataset.i;
+      current = 0; score = 0;
+      renderAll();
     });
   });
+  const active = wrap.querySelector('.round-tab.active');
+  if(active) active.scrollIntoView({inline:'center', behavior:'smooth', block:'nearest'});
+}
 
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    if (current > 0) { current--; render(); }
-  });
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    if (answered[current] === false) return;
-    if (current < questions.length - 1) {
-      current++;
-      render();
+function renderProgress(){
+  const roundData = rounds[currentRoundIdx];
+  document.getElementById('progressWrap').style.display = "block";
+  const pct = Math.round((current/roundData.items.length)*100);
+  document.getElementById('progressFill').style.width = pct + "%";
+  document.getElementById('progressLabel').textContent = `${current} / ${roundData.items.length}`;
+}
+
+function renderStage(){
+  const stage = document.getElementById('stage');
+  const roundData = rounds[currentRoundIdx];
+  const quizCount = roundData.items.filter(i=>i.type==="mc").length;
+
+  if(current >= roundData.items.length){
+    renderProgress();
+    let msg = "정말 잘하셨어요! / Làm rất tốt!";
+    if(quizCount > 0){
+      const ratio = score / quizCount;
+      if(ratio < 0.5) msg = "조금 더 복습하면 훨씬 좋아질 거예요. / Ôn tập thêm sẽ tốt hơn nhiều.";
+      else if(ratio < 0.8) msg = "잘하고 있어요! 조금만 더 연습해요. / Khá tốt! Hãy luyện tập thêm chút nữa.";
     } else {
-      showResult();
+      msg = "수고했어요! 실제 면접처럼 말하는 연습을 해 보세요. / Làm tốt lắm! Hãy luyện nói như phỏng vấn thật.";
     }
+    let scoreLine = quizCount > 0 ? `${score} / ${quizCount}` : "완료 / Hoàn thành";
+    stage.innerHTML = `
+      <div class="result-card">
+        <div style="font-size:15px;font-weight:700;">${roundData.title} 결과</div>
+        <div class="result-score">${scoreLine}</div>
+        <div class="result-msg">${msg}</div>
+        <button class="retry-btn" id="retryBtn">다시 풀기 / Làm lại</button>
+      </div>
+    `;
+    document.getElementById('retryBtn').addEventListener('click', ()=>{
+      current = 0; score = 0;
+      renderStage();
+    });
+    return;
+  }
+
+  const item = roundData.items[current];
+  answered = false;
+  let html = "";
+
+  if(item.type === "info"){
+    html += `<div class="info-card">
+      <span class="tag">실전 질문 · 정답 없음</span>
+      <p>${item.text}</p>
+      ${showVi ? `<div class="info-vi">${item.textVi || ""}</div>` : ""}
+      <div class="sub">${item.sub}</div>
+      ${showVi ? `<div class="sub" style="font-style:italic;">${item.subVi || ""}</div>` : ""}
+    </div>
+    <button class="next-btn" id="nextBtn">다음 → / Tiếp</button>`;
+  } else {
+    html += `<div class="card">
+      <div><span class="q-number">${current+1}</span></div>
+      <div class="q-text">${item.q}</div>
+      ${showVi ? `<div class="q-vi">${item.qVi || ""}</div>` : ""}
+      <div class="options" id="optionsWrap">`;
+    item.options.forEach((opt, idx)=>{
+      const optVi = (item.optionsVi && item.optionsVi[idx]) ? item.optionsVi[idx] : "";
+      html += `<div class="option" data-idx="${idx}" data-label="${opt.replace(/"/g,'&quot;')}" data-vi="${optVi.replace(/"/g,'&quot;')}">
+        <span class="opt-label">${opt}</span>${(showVi && optVi) ? `<span class="opt-vi">${optVi}</span>` : ""}
+      </div>`;
+    });
+    html += `</div>
+      <div class="explanation" id="explBox"><span class="label">해설 / Giải thích</span>${item.exp}${showVi ? `<span class="exp-vi">${item.expVi || ""}</span>` : ""}</div>
+    </div>
+    <button class="next-btn" id="nextBtn" disabled>다음 → / Tiếp</button>`;
+  }
+
+  stage.innerHTML = html;
+  renderProgress();
+
+  if(item.type === "mc"){
+    const opts = stage.querySelectorAll('.option');
+    opts.forEach(opt=>{
+      opt.addEventListener('click', ()=>{
+        if(answered) return;
+        answered = true;
+        const idx = +opt.dataset.idx;
+        opts.forEach(o=>{
+          const oi = +o.dataset.idx;
+          const label = o.dataset.label;
+          const vi = o.dataset.vi;
+          const viSpan = (showVi && vi) ? `<span class="opt-vi">${vi}</span>` : "";
+          if(oi === item.answer){
+            o.classList.add('correct');
+            o.innerHTML = `<span class="icon">✓</span><span class="opt-label">${label}</span>${viSpan}`;
+          } else if(oi === idx){
+            o.classList.add('wrong');
+            o.innerHTML = `<span class="icon">✕</span><span class="opt-label">${label}</span>${viSpan}`;
+          } else {
+            o.classList.add('disabled-look');
+          }
+        });
+        if(idx === item.answer) score++;
+        document.getElementById('explBox').classList.add('show');
+        document.getElementById('nextBtn').disabled = false;
+      });
+    });
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    current++;
+    renderStage();
   });
 }
 
-function showResult() {
-  quizArea.classList.add('hidden');
-  resultArea.classList.remove('hidden');
-  document.getElementById('scoreText').textContent = `${score} / ${questions.length}`;
-  const pct = Math.round((score / questions.length) * 100);
-  let msg = "";
-  if (pct >= 80) msg = "정말 잘했어요! 시험 준비가 잘 되고 있어요. 👍 / Rất giỏi! Bạn đang chuẩn bị rất tốt.";
-  else if (pct >= 50) msg = "잘하고 있어요! 조금만 더 연습해요. 💪 / Khá tốt! Hãy luyện tập thêm một chút.";
-  else msg = "괜찮아요, 다시 한번 풀어봐요! 🙂 / Không sao, hãy thử làm lại nhé!";
-  document.getElementById('scoreMsg').textContent = msg;
+function renderAll(){
+  renderRoundTabs();
+  renderStage();
 }
 
-render();
+document.getElementById('viToggle').addEventListener('click', function(){
+  showVi = !showVi;
+  this.textContent = showVi ? "🇻🇳 번역 켜짐" : "🇻🇳 번역 꺼짐";
+  this.classList.toggle('active', showVi);
+  renderStage();
+});
+
+renderAll();
 </script>
 </body>
 </html>
